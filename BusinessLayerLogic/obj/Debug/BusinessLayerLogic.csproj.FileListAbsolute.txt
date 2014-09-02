@@ -34,3 +34,9 @@ C:\DOT NET\20140511_TGAN_4.0\Web\bin\BusinessLayerLogic.pdb
 C:\DOT NET\20140511_TGAN_4.0\BusinessLayerLogic\obj\Debug\ResolveAssemblyReference.cache
 C:\DOT NET\20140511_TGAN_4.0\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.dll
 C:\DOT NET\20140511_TGAN_4.0\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.pdb
+C:\DOT NET\TGAN_GIT_REPOSITORY\TGAN\Web\bin\BusinessLayerLogic.dll.config
+C:\DOT NET\TGAN_GIT_REPOSITORY\TGAN\Web\bin\BusinessLayerLogic.dll
+C:\DOT NET\TGAN_GIT_REPOSITORY\TGAN\Web\bin\BusinessLayerLogic.pdb
+C:\DOT NET\TGAN_GIT_REPOSITORY\TGAN\BusinessLayerLogic\obj\Debug\ResolveAssemblyReference.cache
+C:\DOT NET\TGAN_GIT_REPOSITORY\TGAN\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.dll
+C:\DOT NET\TGAN_GIT_REPOSITORY\TGAN\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.pdb

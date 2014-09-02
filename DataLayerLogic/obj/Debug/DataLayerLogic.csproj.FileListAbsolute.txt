@@ -22,3 +22,9 @@ C:\DOT NET\20140511_TGAN_4.0\Web\bin\DataLayerLogic.pdb
 C:\DOT NET\20140511_TGAN_4.0\DataLayerLogic\obj\Debug\ResolveAssemblyReference.cache
 C:\DOT NET\20140511_TGAN_4.0\DataLayerLogic\obj\Debug\DataLayerLogic.dll
 C:\DOT NET\20140511_TGAN_4.0\DataLayerLogic\obj\Debug\DataLayerLogic.pdb
+C:\DOT NET\TGAN_GIT_REPOSITORY\TGAN\Web\bin\DataLayerLogic.dll.config
+C:\DOT NET\TGAN_GIT_REPOSITORY\TGAN\Web\bin\DataLayerLogic.dll
+C:\DOT NET\TGAN_GIT_REPOSITORY\TGAN\Web\bin\DataLayerLogic.pdb
+C:\DOT NET\TGAN_GIT_REPOSITORY\TGAN\DataLayerLogic\obj\Debug\ResolveAssemblyReference.cache
+C:\DOT NET\TGAN_GIT_REPOSITORY\TGAN\DataLayerLogic\obj\Debug\DataLayerLogic.dll
+C:\DOT NET\TGAN_GIT_REPOSITORY\TGAN\DataLayerLogic\obj\Debug\DataLayerLogic.pdb
