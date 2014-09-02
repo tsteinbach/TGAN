@@ -1,0 +1,8 @@
+C:\Dev\20120104_DevDay\Web\bin\DataLayerLogic.dll.config
+C:\Dev\20120104_DevDay\Web\bin\DataLayerLogic.dll
+C:\Dev\20120104_DevDay\DataLayerLogic\obj\Release\ResolveAssemblyReference.cache
+C:\Dev\20120104_DevDay\DataLayerLogic\obj\Release\DataLayerLogic.dll
+C:\Dev\Tgan\TGAN_4.0\Web\bin\DataLayerLogic.dll.config
+C:\Dev\Tgan\TGAN_4.0\Web\bin\DataLayerLogic.dll
+C:\Dev\Tgan\TGAN_4.0\DataLayerLogic\obj\Release\ResolveAssemblyReference.cache
+C:\Dev\Tgan\TGAN_4.0\DataLayerLogic\obj\Release\DataLayerLogic.dll

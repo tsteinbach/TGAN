@@ -1,0 +1,6 @@
+C:\Inetpub\wwwroot\TGAN2005\Bin\BusinessLayerLogic.dll
+C:\Inetpub\wwwroot\TGAN2005\Bin\BusinessLayerLogic.pdb
+C:\transfer\TGAN\References\BusinessLayerLogic\obj\Debug\ResolveAssemblyReference.cache
+C:\transfer\TGAN\References\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.dll
+C:\transfer\TGAN\References\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.pdb
+C:\Inetpub\wwwroot\TGAN2005\Bin\BusinessLayerLogic.dll.config

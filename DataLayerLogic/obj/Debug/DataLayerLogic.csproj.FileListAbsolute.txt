@@ -1,0 +1,24 @@
+C:\Inetpub\wwwroot\TGAN2005\Bin\DataLayerLogic.dll.config
+C:\Inetpub\wwwroot\TGAN2005\Bin\DataLayerLogic.dll
+C:\Inetpub\wwwroot\TGAN2005\Bin\DataLayerLogic.pdb
+C:\transfer\TGAN\References\DataLayerLogic\obj\Debug\ResolveAssemblyReference.cache
+C:\transfer\TGAN\References\DataLayerLogic\obj\Debug\DataLayerLogic.dll
+C:\transfer\TGAN\References\DataLayerLogic\obj\Debug\DataLayerLogic.pdb
+C:\Dev\20120104_DevDay\DataLayerLogic\obj\Debug\ResolveAssemblyReference.cache
+C:\Dev\20120104_DevDay\DataLayerLogic\obj\Debug\DataLayerLogic.dll
+C:\Dev\20120104_DevDay\DataLayerLogic\obj\Debug\DataLayerLogic.pdb
+C:\Dev\20120104_DevDay\Web\bin\DataLayerLogic.dll.config
+C:\Dev\20120104_DevDay\Web\bin\DataLayerLogic.dll
+C:\Dev\20120104_DevDay\Web\bin\DataLayerLogic.pdb
+C:\Dev\Tgan\TGAN_4.0\Web\bin\DataLayerLogic.dll.config
+C:\Dev\Tgan\TGAN_4.0\Web\bin\DataLayerLogic.dll
+C:\Dev\Tgan\TGAN_4.0\Web\bin\DataLayerLogic.pdb
+C:\Dev\Tgan\TGAN_4.0\DataLayerLogic\obj\Debug\ResolveAssemblyReference.cache
+C:\Dev\Tgan\TGAN_4.0\DataLayerLogic\obj\Debug\DataLayerLogic.dll
+C:\Dev\Tgan\TGAN_4.0\DataLayerLogic\obj\Debug\DataLayerLogic.pdb
+C:\DOT NET\20140511_TGAN_4.0\Web\bin\DataLayerLogic.dll.config
+C:\DOT NET\20140511_TGAN_4.0\Web\bin\DataLayerLogic.dll
+C:\DOT NET\20140511_TGAN_4.0\Web\bin\DataLayerLogic.pdb
+C:\DOT NET\20140511_TGAN_4.0\DataLayerLogic\obj\Debug\ResolveAssemblyReference.cache
+C:\DOT NET\20140511_TGAN_4.0\DataLayerLogic\obj\Debug\DataLayerLogic.dll
+C:\DOT NET\20140511_TGAN_4.0\DataLayerLogic\obj\Debug\DataLayerLogic.pdb

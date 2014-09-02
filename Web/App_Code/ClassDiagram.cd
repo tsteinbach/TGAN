@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="BasePage" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>App_Code\BasePage.cs</FileName>
+      <HashCode>CAgEAFAAAAAAAAAEoAACAECAhAAECgQAAAAAEQAIAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MemberInfomationBasePage" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>App_Code\MemberInfomationBasePage.cs</FileName>
+      <HashCode>AAACgAAAAAAAIAAAAAAAAgAgAAAAAAAAAAIQAAEAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tests" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>App_Code\Tests.cs</FileName>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TGANConfiguration" Collapsed="true">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>App_Code\TGANConfiguration.cs</FileName>
+      <HashCode>AAAAABEAAAAAAAAAAAAAABAACAAAAgAAAAAAAAECAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TippresultOverview" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>App_Code\TippresultOverview.cs</FileName>
+      <HashCode>AAAAAACABAACgAABAQAgoAAgAAQCEAAABBAEAAIAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="ITippresultOverview" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>App_Code\ITippresultOverview.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+</ClassDiagram>

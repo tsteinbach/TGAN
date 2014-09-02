@@ -1,0 +1,36 @@
+C:\Inetpub\wwwroot\TGAN2005\Bin\BusinessLayerLogic.dll.config
+C:\Inetpub\wwwroot\TGAN2005\Bin\BusinessLayerLogic.dll
+C:\Inetpub\wwwroot\TGAN2005\Bin\BusinessLayerLogic.pdb
+C:\transfer\TGAN\References\BusinessLayerLogic\obj\Debug\ResolveAssemblyReference.cache
+C:\transfer\TGAN\References\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.dll
+C:\transfer\TGAN\References\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.pdb
+C:\Dev\20120104_DevDay\BusinessLayerLogic\obj\Debug\ResolveAssemblyReference.cache
+C:\Dev\20120104_DevDay\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.dll
+C:\Dev\20120104_DevDay\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.pdb
+C:\Dev\20120104_DevDay\Web\bin\BusinessLayerLogic.dll.config
+C:\Dev\20120104_DevDay\Web\bin\BusinessLayerLogic.dll
+C:\Dev\20120104_DevDay\Web\bin\BusinessLayerLogic.pdb
+C:\Dev\Tgan\TGAN_4.0\Web\bin\BusinessLayerLogic.dll.config
+C:\Dev\Tgan\TGAN_4.0\Web\bin\BusinessLayerLogic.dll
+C:\Dev\Tgan\TGAN_4.0\Web\bin\BusinessLayerLogic.pdb
+C:\Dev\Tgan\TGAN_4.0\BusinessLayerLogic\obj\Debug\ResolveAssemblyReference.cache
+C:\Dev\Tgan\TGAN_4.0\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.dll
+C:\Dev\Tgan\TGAN_4.0\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.pdb
+C:\DOT NET\20130604_TGAN_4.0\Web\bin\BusinessLayerLogic.dll.config
+C:\DOT NET\20130604_TGAN_4.0\Web\bin\BusinessLayerLogic.dll
+C:\DOT NET\20130604_TGAN_4.0\Web\bin\BusinessLayerLogic.pdb
+C:\DOT NET\20130604_TGAN_4.0\BusinessLayerLogic\obj\Debug\ResolveAssemblyReference.cache
+C:\DOT NET\20130604_TGAN_4.0\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.dll
+C:\DOT NET\20130604_TGAN_4.0\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.pdb
+C:\DOT NET\20140427_TGAN_4.0\Web\bin\BusinessLayerLogic.dll.config
+C:\DOT NET\20140427_TGAN_4.0\Web\bin\BusinessLayerLogic.dll
+C:\DOT NET\20140427_TGAN_4.0\Web\bin\BusinessLayerLogic.pdb
+C:\DOT NET\20140427_TGAN_4.0\BusinessLayerLogic\obj\Debug\ResolveAssemblyReference.cache
+C:\DOT NET\20140427_TGAN_4.0\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.dll
+C:\DOT NET\20140427_TGAN_4.0\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.pdb
+C:\DOT NET\20140511_TGAN_4.0\Web\bin\BusinessLayerLogic.dll.config
+C:\DOT NET\20140511_TGAN_4.0\Web\bin\BusinessLayerLogic.dll
+C:\DOT NET\20140511_TGAN_4.0\Web\bin\BusinessLayerLogic.pdb
+C:\DOT NET\20140511_TGAN_4.0\BusinessLayerLogic\obj\Debug\ResolveAssemblyReference.cache
+C:\DOT NET\20140511_TGAN_4.0\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.dll
+C:\DOT NET\20140511_TGAN_4.0\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.pdb

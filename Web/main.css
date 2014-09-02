@@ -1,0 +1,451 @@
+﻿#progressBackgroundFilter { 
+  position:absolute; 
+  top:0px; 
+  bottom:0px; 
+  left:0px; 
+  right:0px; 
+  overflow:hidden; 
+  padding:0; 
+  margin:0; 
+  background-color:#000;  
+  filter:alpha(opacity=50); 
+  opacity:0.5; 
+  z-index:1000; 
+} 
+
+#processMessage {  
+  
+  position:absolute;  
+  top:30%;  
+  left:10%; 
+  padding:10px; 
+  width:60%; 
+  z-index:1001; 
+  background-image:url("images/netz.jpg");
+  background-repeat:repeat; 
+  color:Orange;
+  font-style:italic;
+  font-weight:900;
+} 
+
+.whiteBackground
+{
+	background-color:White;
+}
+
+.centerControl
+{ 
+	margin-left: auto;
+	margin-right: auto;
+}
+
+   
+.actUserList
+{
+	padding: 4px 4px 12px 7px;
+	color:White;
+}        
+
+ 
+
+.errorMsg
+{
+	color:Red;
+	width:350px;
+	height:70px;
+}
+
+.TippInfoVisibility
+{
+	visibility:hidden;
+	width:190px;
+}
+
+.TippIsValid
+{
+	visibility:visible;
+	background-color:Green;
+	width:190px;
+}
+
+.TippIsNotValid
+{
+	visibility:visible;
+	background-color:Red;
+	width:190px;
+}
+
+.EchteBank
+{
+	background-color:Blue; 
+	color:White;
+}
+
+.UnechteBank
+{
+	background-color:Aqua;
+	color:White; 
+}
+
+.True
+{
+	background-color:Green; 
+	color:White;
+}
+
+.False
+{
+	background-color:Red; 
+	color:White;
+}
+
+.NotReadable
+{
+	background-color:Gray; 
+	color:White;
+}
+
+.watermark
+{
+	color:Gray;
+}
+	
+
+html,body{margin:0;padding:0; }
+body{font-family: Arial, Helvetica, Sans-Serif;
+	
+	background-color: #013300 ;	
+}
+
+p
+{
+	margin:0 10px 10px;
+}
+
+p#infoText
+{
+	text-align:center;
+	color:White;
+}
+
+div#header
+{
+	height:30px;
+	left:15px;
+	position:absolute;
+	top:0px;
+	width:1012px;
+}
+ 
+div#container
+{
+	text-align:left;
+	width:100%;margin:0 auto
+}
+
+div#navigation
+{
+	left:15px;
+	position:absolute;
+	top:50px;
+	width:260px;
+}
+
+div#logo
+{
+	
+	margin: 4px 12px 12px 7px;
+	/*height:80px;
+	background-color:White;
+	background-image:url("images/Logo.png");
+	background-repeat:no-repeat;
+	background-position:center;*/
+}
+
+div#content
+{
+	left:283px;
+	position:absolute;
+	top:50px;
+	width:709px;
+	background:#013300 url("images/bg_Lawn.jpg") repeat-y scroll center;
+}
+
+div#bibleVersePart
+{
+	background:#FF8539;
+	margin: 4px 12px 12px 7px;
+	padding: 4px 4px 12px 7px;
+}
+
+div#gloryList
+{
+	/*background-color: #DCF050;*/
+	margin: 0px 5px 5px 5px;
+}
+
+
+
+div#footer
+{
+	height:15px;
+	left:20px;
+	position:absolute;
+	bottom:15px;
+	width:1012px;
+	color:White;
+}
+
+.TippOverview
+{
+	font-size:90%;
+	text-align:center;
+	border-style:solid;
+	border-width:thin;
+	height:500px;
+}
+
+.gesamtStand_TH
+{
+	border-style:solid;
+	border-color:Black;
+	border-width:thin;
+	background-color: #1E8CFF;
+}
+
+.excelOverViewTippsTH
+{
+	font-style:italic;
+}
+
+.excelOverviewGames, .excelOverViewTipps
+{
+	font-size:70%;
+	text-align:center;
+	vertical-align:top;
+}
+
+h4, .excelOverviewGames, .excelOverViewTippsTH
+{
+	font-style:italic;
+	font-weight:bold;
+	color:White;
+	background-color: #1E8CFF;
+}
+
+.excelOverViewTippsTR
+{
+	background-color:White;
+}
+
+
+
+
+div#login 
+{
+	background-color:White;
+	margin: 10px 10px 10px 10px;
+	padding: 3px 3px 3px 3px;
+	width:45%;
+	position:relative;
+	top:0;
+	left:0;
+}
+
+.rescheduledGames
+{
+	text-align:center;
+	margin-right:10px;
+	margin-top:10px;
+	width:45%;
+	border:1;
+	border-style:solid;
+	border-width:thin;
+	position:absolute;
+	top:0;
+	right:0;
+}
+
+.gesamtStandConfig
+{
+	text-align:center;
+	margin:10px;
+	padding:10px;
+	width:45%;
+	border:1;
+	border-style:solid;
+	border-width:thin;
+}
+
+div#forumItems
+{
+	background-color: #DCF050;
+	padding: 3px 3px 3px 3px;
+	margin: 10px 10px 10px 10px;
+	font-size:80%;
+	width:45%;
+}
+
+div#untenDefault
+{
+	position:relative;
+	bottom:0;
+	left:0;
+}
+
+div#BirthdayChildren
+{
+	margin: 10px 10px 10px 10px;
+	padding: 3px 3px 3px 3px;
+	border-style:solid;
+	border-color:White;
+	border-width:thin;
+	font-size:80%;
+	width:45%;
+	color:White;
+}
+
+.alternateRow, .rescheduledGames, .gesamtStandConfig
+{
+	background-color: #99cc00;
+	color:White;
+}
+
+.nonAlternateRow
+{
+	background-color: White;
+	color:Green;
+}
+
+.errorLink, .impressum
+{
+	color:White;
+}
+
+
+
+.tippLegend
+{
+	font-size:80%;
+	color:White;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.TippTable
+{
+	color:White;
+	font-size:80%;
+	border-style:solid;
+	width:500px;
+	text-align:center;
+	vertical-align:middle;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.forumPanel
+{
+	width:100%;
+	border-style:solid;
+	border-color:#99cc00;
+}
+
+.TippTable th
+{
+	font-size:150%;
+}
+
+
+div#login label, .logOut
+{
+	font-size:80%;
+}
+
+.loginCmd
+{
+	font-weight:bold;
+	color:White;
+	font-style:italic;
+	background-color:Green;
+	width:100px;	
+}
+ 
+div#login p
+{
+	font-size:70%;
+	line-height:10px;
+}
+
+div#MemberInfoOverview
+{
+	background-color: #DCF050;
+	margin:20px 20px 20px 20px;
+	padding:10px 10px 10px 10px;
+}
+
+div.MemberInfoOverview p
+{
+	
+	color: #1E8CFF;
+}
+
+.ForumComment
+{
+	font-size:9pt;
+	color:White;
+}
+
+.forumControl
+{
+	width:95%;
+}
+
+.headline
+{
+	background-color: #99cc00;
+	font-style:italic;
+	font-weight:bold;
+}
+
+
+table#lstOfWinners
+{
+	font-size:80%;
+	background-color:White;
+	text-align:center;
+	vertical-align:middle;
+}
+
+table#lstOfWinners th
+{
+	background-color:Olive;	
+}
+
+div.menueItems
+{
+	background-color: #DCF050;
+	margin: 4px 12px 12px 7px;
+	padding: 4px 4px 12px 7px;
+}
+
+.lh4
+{
+	line-height:4px;	
+}
+
+
+
+
+.usercount
+{
+	margin: 4px 12px 12px 7px;
+	background-color:White;
+	font-size:8pt;
+}
+
+a.menue:link {color: #1E8CFF; text-decoration: none; cursor:pointer;cursor: hand; font-weight:bold;}
+a.menue:visited {color: #1E8CFF; text-decoration: none;cursor:pointer;cursor: hand;font-weight:bold;}
+a.menue:hover {color: #DCF050;background-color:#1E8CFF; text-decoration: none;cursor:pointer;cursor: hand}
+
+.logOut:link{color:Red;}

@@ -1,0 +1,81 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="TGANMaster.master.cs" Inherits="TGANMaster" %>
+<%@ Register Assembly="System.Web.Extensions, Version=1.0.61025.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI" TagPrefix="asp" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+
+<title>TGAN-Master</title>
+<link href="main.css" rel="Stylesheet" type="text/css" />
+     
+</head>
+<body>
+    <form id="MasterForm" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true" EnablePageMethods="true" />
+         <div id = "container">
+           <div id = "header">
+                <%--<asp:UpdatePanel ID="updateHeader" runat="server" UpdateMode="Always">
+                    <ContentTemplate>--%>
+                        <h4><asp:Label ID="lblLogininfo" runat="server"></asp:Label></h4> 
+                        <div class="lh4"><br /></div>
+                         
+                        <div class="lh4"><br /></div>
+                    <%--</ContentTemplate>
+                </asp:UpdatePanel>--%>
+           </div>
+            <div id="navigation">
+                
+                <div id="logo">
+                    <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="240" height="80">
+                    <param name="movie" value="flash/logoAnimate.swf">
+                    <param name="wmode" value="transparent">
+                    <embed src="flash/logoAnimate.swf" quality="high" width="240" height="80" name="show" align="middle" FlashVars="width=240&height=80" allowScriptAccess="sameDomain" allowFullScreen="true" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+                    </object>
+                </div>
+                <div class="actUserList">
+                    <div><%Response.Write("Aktuelle Serverzeit: " + DateTime.Now.ToShortTimeString());%></div>
+                    <asp:Label CssClass="headline" ID="lblActUsersHead" Text="Aktuell angemeldete Mitglieder:" runat="server"></asp:Label>
+                    <asp:Label ID="litActUserList" runat="server">
+                     </asp:Label>
+
+                </div>
+                <div class="menueItems">
+                    <asp:Label CssClass="headline" ID="MenuAllgemein" Text="Anwendungen" runat="server"></asp:Label>
+                    <ul >
+                        <li><a class="menue" id="lnkHome" href="Default.aspx">Startseite</a><br /></li>
+                        <li><a class="menue" id="lnkTippMng" href="Tipp-Manager.aspx">Tipps eintragen</a><br /></li>
+                        <li><a class="menue" id="lnkGesamtstand" href="Gesamtstand.aspx">Tippübersicht</a><br /></li>
+                        <li><a class="menue" id="lnkMemberInf" href="Member-Information.aspx">Mitgliederinfos</a><br /></li>
+                        <li><a class="menue" id="lnkForum" href="Forum_TGAN.aspx">Forum</a></li>
+                    </ul>
+                    <asp:Label CssClass="headline" ID="Label1" Text="Sonstiges" runat="server"></asp:Label>
+                    <ul >
+                        <li><a class="menue" href="Docs/TSATZ.pdf">Satzung</a></li>
+                        <li><a class="menue" href="Impressum.aspx">Impressum</a></li>
+                        <li><a class="menue" href="HallOfFame.aspx">Siegerliste</a></li>
+                        <li><a class="menue" href="VerseOfBible.aspx">Bibelvers</a></li>
+                    </ul>
+                    <asp:Label CssClass="headline" ID="MenuAdministration" Text="Administration" runat="server"></asp:Label>
+                    <ul>
+                        <li><a class="menue" id="lnkMemberAdmin" href="MemberAdmin.aspx">Neue Mitglieder</a><br /></li>
+                        <li><a class="menue" id="lnkTippAdmin" href="TippAdmin.aspx">Tipps nachtragen</a></li>
+                        <li><a class="menue" id="lnkExcelExport" href="exportToExcel.aspx">Excel-Export</a></li>
+                    </ul>
+                    <p><asp:LinkButton ID="cmdLogOut" CssClass="logOut" runat="server" Text="abmelden" OnClick="cmdLogOut_Click"></asp:LinkButton></p>
+                </div>
+                <span class="lh4"><br /></span>
+            </div>
+           <div id="content">             
+                <asp:ContentPlaceHolder ID="mainContent" runat="server" />
+                <span class="lh4"><br /></span>
+           </div>
+           <%--<div id="right">
+                
+           </div>--%>
+            <div id="footer" runat="server">
+               
+            </div>
+       </div>
+    </form>
+</body>
+</html>

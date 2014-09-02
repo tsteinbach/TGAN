@@ -1,0 +1,11 @@
+bin\Debug\DataLayerLogic.dll
+bin\Debug\DataLayerLogic.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\DataLayerLogic.dll
+obj\Debug\DataLayerLogic.pdb
+..\..\Bin\DataLayerLogic.dll
+..\..\Bin\DataLayerLogic.pdb
+..\..\Bin\DataLayerLogic.dll.config
+..\..\..\..\Inetpub\wwwroot\TGAN2005\Bin\DataLayerLogic.dll.config
+..\..\..\..\Inetpub\wwwroot\TGAN2005\Bin\DataLayerLogic.dll
+..\..\..\..\Inetpub\wwwroot\TGAN2005\Bin\DataLayerLogic.pdb

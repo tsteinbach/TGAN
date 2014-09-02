@@ -1,0 +1,12 @@
+C:\Dev\20120104_DevDay\BusinessLayerLogic\obj\Release\ResolveAssemblyReference.cache
+C:\Dev\20120104_DevDay\Web\bin\BusinessLayerLogic.dll.config
+C:\Dev\20120104_DevDay\Web\bin\BusinessLayerLogic.dll
+C:\Dev\20120104_DevDay\Web\bin\BusinessLayerLogic.XmlSerializers.dll
+C:\Dev\20120104_DevDay\BusinessLayerLogic\obj\Release\BusinessLayerLogic.dll
+C:\Dev\20120104_DevDay\BusinessLayerLogic\obj\Release\BusinessLayerLogic.XmlSerializers.dll
+C:\Dev\Tgan\TGAN_4.0\BusinessLayerLogic\obj\Release\ResolveAssemblyReference.cache
+C:\Dev\Tgan\TGAN_4.0\BusinessLayerLogic\obj\Release\BusinessLayerLogic.dll
+C:\Dev\Tgan\TGAN_4.0\BusinessLayerLogic\obj\Release\BusinessLayerLogic.XmlSerializers.dll
+C:\Dev\Tgan\TGAN_4.0\Web\bin\BusinessLayerLogic.dll.config
+C:\Dev\Tgan\TGAN_4.0\Web\bin\BusinessLayerLogic.dll
+C:\Dev\Tgan\TGAN_4.0\Web\bin\BusinessLayerLogic.XmlSerializers.dll

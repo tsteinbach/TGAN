@@ -1,0 +1,11 @@
+bin\Debug\BusinessLayerLogic.dll
+bin\Debug\BusinessLayerLogic.pdb
+bin\Debug\DataLayerLogic.dll
+bin\Debug\DataLayerLogic.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\BusinessLayerLogic.dll
+obj\Debug\BusinessLayerLogic.pdb
+..\..\Bin\BusinessLayerLogic.dll
+..\..\Bin\BusinessLayerLogic.pdb
+..\..\..\..\Inetpub\wwwroot\TGAN2005\Bin\BusinessLayerLogic.dll
+..\..\..\..\Inetpub\wwwroot\TGAN2005\Bin\BusinessLayerLogic.pdb
