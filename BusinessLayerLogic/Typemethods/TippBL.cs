@@ -276,10 +276,11 @@ namespace BusinessLayerLogic.Typemethods
                 _Round = round;
 
                 GesamtStand helper = new GesamtStand(_Member,_Round);
-                
+
                 Gesamtstands gDB;
-                bool isRoundInDB = false;
-                bool isRoundOver = helper.tryGetGesamtStandFromDB(this._dbAccess, timeToleranceAfterGameFinished, out gDB, out isRoundInDB);
+                bool isRoundInDB;
+                bool isRoundOver;
+                IsTotalByMemberInDb(timeToleranceAfterGameFinished, helper, out gDB, out isRoundInDB, out isRoundOver);
 
                 if (!isRoundInDB && isRoundOver)
                 {
@@ -321,6 +322,13 @@ namespace BusinessLayerLogic.Typemethods
             }
 
             return totalCurrentRound;
+        }
+
+        public void IsTotalByMemberInDb(double timeToleranceAfterGameFinished, GesamtStand helper, out Gesamtstands gDB, out bool isRoundInDB, out bool isRoundOver)
+        {
+
+            isRoundInDB = false;
+            isRoundOver = helper.tryGetGesamtStandFromDB(this._dbAccess, timeToleranceAfterGameFinished, out gDB, out isRoundInDB);
         }
 
         private void calculateGesamtStand(object gesamtStand)

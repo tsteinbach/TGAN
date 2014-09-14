@@ -13,6 +13,7 @@ using BusinessLayerLogic.Typemethods;
 using System.Xml;
 using System.Threading;
 using System.Linq;
+using DataLayerLogic;
 
 /// <summary>
 /// Summary description for TippresultOverview
@@ -241,10 +242,14 @@ public class TippresultOverview : MemberInfomationBasePage, ITippresultOverview
             tippB = new TippBL(RoundOfImportance, SeasonOfImportance, m, GamesOfImportance, UserGroupOfImportance, TGANConfiguration.DBACCESS);
             tippsPerUser.TippsPerUserPROP.Add(m, tippB.GetTipp());
 
-            //GesamtStand g;
-            //var totalOfRound = tippB.GetGesamtStandPerUser(out g, TGANConfiguration.CheckResultsAfterGameStart);
+            GesamtStand g = new GesamtStand(m, RoundOfImportance);
+            Gesamtstands gDb;
+            bool isRoundInDb = false;
+            bool isRoundOver = false;
+            tippB.IsTotalByMemberInDb(TGANConfiguration.CheckResultsAfterGameStart,g, out gDb, out isRoundInDb, out isRoundOver);
             
-            //gesamtStandList.Add(new Tuple<GesamtStand,int>(g, totalOfRound));
+            if(isRoundInDb && gDb != null)
+                gesamtStandList.Add(new Tuple<GesamtStand,int>(g, gDb.PunkteInsgesamt));
         }
 
 
