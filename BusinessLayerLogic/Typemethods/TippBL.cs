@@ -259,6 +259,24 @@ namespace BusinessLayerLogic.Typemethods
                 ((List<GesamtStand>)gesamtStandList).Add(gesamtStand);
         }
 
+        public int GetTotal(double timeToleranceAfterGameFinished)
+        {
+            GesamtStand helper = new GesamtStand(_Member, _Round);
+
+            Gesamtstands gDB;
+            bool isRoundInDB;
+            bool isRoundOver;
+            IsTotalByMemberInDb(timeToleranceAfterGameFinished, helper, out gDB, out isRoundInDB, out isRoundOver);
+
+            if (!isRoundInDB)
+            {
+                this.calculateGesamtStand(helper);
+                return helper.PunkteInsgesamt;
+            }
+            else
+                return gDB.PunkteInsgesamt;
+        }
+
         public int GetGesamtStandPerUser(out GesamtStand gesamtStand, double timeToleranceAfterGameFinished)
         {
             int selectedRound = _Round.RoundNo; ;
@@ -324,7 +342,7 @@ namespace BusinessLayerLogic.Typemethods
             return totalCurrentRound;
         }
 
-        public void IsTotalByMemberInDb(double timeToleranceAfterGameFinished, GesamtStand helper, out Gesamtstands gDB, out bool isRoundInDB, out bool isRoundOver)
+        private void IsTotalByMemberInDb(double timeToleranceAfterGameFinished, GesamtStand helper, out Gesamtstands gDB, out bool isRoundInDB, out bool isRoundOver)
         {
 
             isRoundInDB = false;
