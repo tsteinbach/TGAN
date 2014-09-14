@@ -235,7 +235,6 @@ public class TippresultOverview : MemberInfomationBasePage, ITippresultOverview
 
         //reset of tippResultDictionary
         TippsPerUser tippsPerUser = new TippsPerUser();
-        //List<Tuple<GesamtStand,int>> gesamtStandList = new List<Tuple<GesamtStand,int>>();
         Dictionary<Guid, int> totalList = new Dictionary<Guid, int>();
 
         foreach (Member m in users)
@@ -243,16 +242,8 @@ public class TippresultOverview : MemberInfomationBasePage, ITippresultOverview
             tippB = new TippBL(RoundOfImportance, SeasonOfImportance, m, GamesOfImportance, UserGroupOfImportance, TGANConfiguration.DBACCESS);
             tippsPerUser.TippsPerUserPROP.Add(m, tippB.GetTipp());
 
-            //GesamtStand g = new GesamtStand(m, RoundOfImportance);
-            //Gesamtstands gDb;
-            //bool isRoundInDb = false;
-            //bool isRoundOver = false;
-            //tippB.IsTotalByMemberInDb(TGANConfiguration.CheckResultsAfterGameStart,g, out gDb, out isRoundInDb, out isRoundOver);
-
             var total = tippB.GetTotal(TGANConfiguration.CheckResultsAfterGameStart);
             totalList.Add(m.ID, total);
-            //if(isRoundInDb && gDb != null)
-            //    gesamtStandList.Add(new Tuple<GesamtStand,int>(g, gDb.PunkteInsgesamt));
         }
 
 
@@ -270,12 +261,10 @@ public class TippresultOverview : MemberInfomationBasePage, ITippresultOverview
             td.Text = tippResult.Key.UserName;
             tr.Cells.Add(td);
 
-            //var gesamtstanfOfMember = gesamtStandList.SingleOrDefault(x => x.Item1.Member.ID == tippResult.Key.ID);
-
             //Totalanzahl des Spieltags wird angezeigt
             td = new TableCell();
             td.CssClass = "gesamtStandConfig";
-            td.Text = totalList.Single(x => x.Key == tippResult.Key.ID).Value.ToString(); //gesamtstanfOfMember == null ? "" : gesamtstanfOfMember.Item2.ToString();
+            td.Text = totalList.Single(x => x.Key == tippResult.Key.ID).Value.ToString(); 
             tr.Cells.Add(td);
 
             // Tipps mit einer farblichen Markierung bzgl. Tippevaluierung werden in die Tabelle eingefügt
