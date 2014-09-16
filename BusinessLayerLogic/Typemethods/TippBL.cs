@@ -96,6 +96,12 @@ namespace BusinessLayerLogic.Typemethods
             _round = r;
         }
 
+        public double CheckResultAfterGameStart
+        {
+            set;
+            private get;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -104,24 +110,12 @@ namespace BusinessLayerLogic.Typemethods
         /// <param name="toleranceAfterGameFinished"></param>
         /// <param name="result"></param>
         /// <returns>is Round over</returns>
-        public bool tryGetGesamtStandFromDB(Buisinesses dbAccess, double toleranceAfterGameFinished, out Gesamtstands result, out bool isRoundinDB)
+        public bool tryGetGesamtStandFromDB(Buisinesses dbAccess, out Gesamtstands result, out bool isRoundinDB)
         {
             result = null;
-            isRoundinDB = false;
-            RoundBL rb = new RoundBL(_round, null, toleranceAfterGameFinished, dbAccess);
-            if (!rb.isRoundOver())
-                return false;
-            else
-            {
-                //Gesamtstands gDB; = new Gesamtstands(dbAccess.conn, _round.ID, _member.ID);
-                isRoundinDB = dbAccess.selectGesamtstandsRow(_member.ID, _round.ID, out result);
-                //result = gDB;
-
-                return true;
-            }
+            isRoundinDB = dbAccess.selectGesamtstandsRow(_member.ID, _round.ID, out result); 
+            return new RoundBL(_round, null, dbAccess).isRoundOver(CheckResultAfterGameStart);
         }
-
-        
 
         public void insertGesamtStandInDB(bool isFromAdminPage, Buisinesses dbAccess)
         {
@@ -179,6 +173,12 @@ namespace BusinessLayerLogic.Typemethods
             _Member = member;
             _Games = games;
             _UserGroup = userGroup;
+        }
+
+        public double CheckResultAfterGameStart
+        {
+            set;
+            private get;
         }
 
         private  Tipp TippSet
@@ -259,14 +259,13 @@ namespace BusinessLayerLogic.Typemethods
                 ((List<GesamtStand>)gesamtStandList).Add(gesamtStand);
         }
 
-        public int GetTotal(double timeToleranceAfterGameFinished)
+        public int GetTotal()
         {
-            GesamtStand helper = new GesamtStand(_Member, _Round);
+            GesamtStand helper = new GesamtStand(_Member, _Round) { CheckResultAfterGameStart = CheckResultAfterGameStart };
 
             Gesamtstands gDB;
             bool isRoundInDB;
-            bool isRoundOver;
-            IsTotalByMemberInDb(timeToleranceAfterGameFinished, helper, out gDB, out isRoundInDB, out isRoundOver);
+            bool isRoundOver = helper.tryGetGesamtStandFromDB(this._dbAccess, out gDB, out isRoundInDB);
 
             if (!isRoundInDB)
             {
@@ -293,12 +292,11 @@ namespace BusinessLayerLogic.Typemethods
             {
                 _Round = round;
 
-                GesamtStand helper = new GesamtStand(_Member,_Round);
+                GesamtStand helper = new GesamtStand(_Member, _Round) { CheckResultAfterGameStart = CheckResultAfterGameStart }; ;
 
                 Gesamtstands gDB;
                 bool isRoundInDB;
-                bool isRoundOver;
-                IsTotalByMemberInDb(timeToleranceAfterGameFinished, helper, out gDB, out isRoundInDB, out isRoundOver);
+                bool isRoundOver = helper.tryGetGesamtStandFromDB(this._dbAccess, out gDB, out isRoundInDB);
 
                 if (!isRoundInDB && isRoundOver)
                 {
@@ -342,11 +340,9 @@ namespace BusinessLayerLogic.Typemethods
             return totalCurrentRound;
         }
 
-        private void IsTotalByMemberInDb(double timeToleranceAfterGameFinished, GesamtStand helper, out Gesamtstands gDB, out bool isRoundInDB, out bool isRoundOver)
+        private void IsTotalByMemberInDb(GesamtStand helper, out Gesamtstands gDB, out bool isRoundInDB, out bool isRoundOver)
         {
-
-            isRoundInDB = false;
-            isRoundOver = helper.tryGetGesamtStandFromDB(this._dbAccess, timeToleranceAfterGameFinished, out gDB, out isRoundInDB);
+            isRoundOver = helper.tryGetGesamtStandFromDB(this._dbAccess,out gDB, out isRoundInDB);
         }
 
         private void calculateGesamtStand(object gesamtStand)

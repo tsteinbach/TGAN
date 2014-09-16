@@ -241,8 +241,9 @@ public class TippresultOverview : MemberInfomationBasePage, ITippresultOverview
         {
             tippB = new TippBL(RoundOfImportance, SeasonOfImportance, m, GamesOfImportance, UserGroupOfImportance, TGANConfiguration.DBACCESS);
             tippsPerUser.TippsPerUserPROP.Add(m, tippB.GetTipp());
+            tippB.CheckResultAfterGameStart = TGANConfiguration.CheckResultsAfterGameStart;
 
-            var total = tippB.GetTotal(TGANConfiguration.CheckResultsAfterGameStart);
+            var total = tippB.GetTotal();
             totalList.Add(m.ID, total);
         }
 

@@ -144,9 +144,8 @@ public partial class TippAdmin : BasePage
         if (SelectedRound != null && USER != null)
         {
             base.GetTippInfo(tippB.SetTipp(new Tipp(tipps, USER, ACTIVEMEMBER, DateTime.Now),true),out cssClass,out infoText);
-            
-            if (new RoundBL(this.SelectedRound, null, TGANConfiguration.CheckResultsAfterGameStart, TGANConfiguration.DBACCESS).isRoundOver())
-                TGANConfiguration.DBACCESS.deleteGesamtStandOfRound(this.SelectedRound.ID);
+
+            TGANConfiguration.DBACCESS.deleteGesamtStandOfRound(this.SelectedRound.ID);
 
             lblInfo.CssClass = cssClass;
             lblInfo.Text = infoText;
@@ -166,8 +165,7 @@ public partial class TippAdmin : BasePage
             TGANConfiguration.DBACCESS.UpdateRoundGame(SelectedRound,game);    
         }
 
-        if (new RoundBL(this.SelectedRound, null, TGANConfiguration.CheckResultsAfterGameStart, TGANConfiguration.DBACCESS).isRoundOver())
-            TGANConfiguration.DBACCESS.deleteGesamtStandOfRound(this.SelectedRound.ID);
+        TGANConfiguration.DBACCESS.deleteGesamtStandOfRound(this.SelectedRound.ID);
     }
 
     #endregion

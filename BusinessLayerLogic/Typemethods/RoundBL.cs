@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Linq;
 using DataLayerLogic.Types;
 using DataLayerLogic;
 using System.Collections;
@@ -15,7 +15,7 @@ namespace BusinessLayerLogic.Typemethods
         private readonly Buisinesses _dbAccess = null;
         private Guid _teamToFind = Guid.Empty;
         private static List<BundesligaTeam> _teams = null;
-        private double _checkResultsAfterGameStart;
+        
 
         private Guid TeamID
         {
@@ -55,46 +55,18 @@ namespace BusinessLayerLogic.Typemethods
             _round = round; 
         }
 
-        public RoundBL(Round round, Season season, double checkResultsAfterGameStart, Buisinesses dbAccess)
-            : this(round,season, dbAccess)
-        {
-            _checkResultsAfterGameStart = checkResultsAfterGameStart;
-        }
-
         #endregion
 
-        public bool isRoundOver()
+        public bool isRoundOver(double checkResultAfterGameStart)
         {
-            DateTime maxStartTime = this.GetMaxStartTimeOfCertainRound();
-#warning needs to be checked: does if statement work!
-            if (maxStartTime.Equals(DateTime.MaxValue))
+            DateTime maxStartTime = GetGames().Max(x => x.StartTime);
+
+            if (DateTime.Compare( maxStartTime,DateTime.MaxValue) == 0)
                 return false;
-            else if (DateTime.Compare(DateTime.Now, maxStartTime.AddMinutes(_checkResultsAfterGameStart)) != 1)
+            else if (DateTime.Compare(DateTime.Now, maxStartTime.AddMinutes(checkResultAfterGameStart)) != 1)
                 return false;
             else
                 return true;
-        }
-
-        public DateTime GetMaxStartTimeOfCertainRound()
-        { 
-            List<RoundGame> games = GetGames();
-            DateTime maxDate = DateTime.MinValue;
-
-            foreach (RoundGame game in games)
-            {
-                DateTime start = DateTime.Parse(game.StartTime.ToShortDateString());
-                DateTime parsedMaxDate = DateTime.Parse(DateTime.MaxValue.ToShortDateString());
-                if (start.CompareTo(parsedMaxDate) != 0)
-                {
-                    DateTime gameEnd = game.StartTime.AddMinutes(_checkResultsAfterGameStart);
-                    if (DateTime.Compare(gameEnd, maxDate) == 1)
-                        maxDate = gameEnd;
-                }
-                else
-                    maxDate = game.StartTime;
-            }
-
-            return maxDate;
         }
 
         public Round GetRoundByRoundNo(int roundNo)
