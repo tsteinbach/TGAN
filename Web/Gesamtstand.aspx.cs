@@ -16,6 +16,7 @@ using System.IO;
 //using FlickrNet;
 using System.Collections.Generic;
 using BusinessLayerLogic;
+using System.Linq;
 
 public partial class Login : BasePage
 {
@@ -129,12 +130,16 @@ public partial class Login : BasePage
             foreach (UserGroup ug in uGroups)
             {
                 List<Member> members = mB.GetAllMembers(ug,true,ACTUALSEASON);
-                
+
+                var torsten = mB.GetAllMembers(uGroups.Single(x => x.ID == new Guid("475A6D64-7306-4FDA-8DA6-CDC733BA0A71")), true, ACTUALSEASON)
+                    .Single(x=> x.IsSuperAdmin);
+
                 foreach (Member m in members)
                 {
                     TippBL tB = new TippBL(ACTUALROUND, ACTUALSEASON, m, games, ug, TGANConfiguration.DBACCESS);
                     Tipp tipp = tB.GetTippWithoutTippEvaluation();
 
+                    
                     if (tipp.GivenTipps.Count == 0)
                     {
                         Dictionary<RoundGame, TippValue> tipps = new Dictionary<RoundGame, TippValue>();
@@ -142,7 +147,9 @@ public partial class Login : BasePage
                         foreach (RoundGame g in games)
                             tipps.Add(g, TippValue.NotSet);
 
-                        tB.SetTipp(new Tipp(tipps, m, m, DateTime.Now), true);
+                        
+
+                        tB.SetTipp(new Tipp(tipps, m, torsten, DateTime.Now), true);
                     }
                 }
             
