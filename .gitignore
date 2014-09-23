@@ -21,3 +21,5 @@
 *.pdb
 
 *.pdb
+
+BusinessLayerLogic/obj/Debug/BusinessLayerLogic.dll

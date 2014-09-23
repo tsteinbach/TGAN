@@ -235,6 +235,12 @@
     <None Include="DataSets\Spieltag.xsx">
       <DependentUpon>Spieltag.xsd</DependentUpon>
     </None>
+    <None Include="DataSets\TippData.xsc">
+      <DependentUpon>TippData.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\TippData.xss">
+      <DependentUpon>TippData.xsd</DependentUpon>
+    </None>
     <None Include="DataSets\TippData.xsx">
       <DependentUpon>TippData.xsd</DependentUpon>
     </None>
