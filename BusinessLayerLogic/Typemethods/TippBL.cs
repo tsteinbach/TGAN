@@ -119,6 +119,16 @@ namespace BusinessLayerLogic.Typemethods
 
         public void insertGesamtStandInDB(bool isFromAdminPage, Buisinesses dbAccess)
         {
+            //that is a necessary validation to prevent any inserts of records which are not valid
+            if (this.EchteBank == 0 &&
+                this.FalscheTipps == 0 &&
+                this.NeunerTipp == 0 &&
+                this.NichtGetippt == 0 &&
+                this.PunkteInsgesamt == 0 &&
+                this.RichtigeTipps == 0 &&
+                this.UnechteBank == 0)
+                return;
+
             if (isFromAdminPage)
                 throw new NotImplementedException();
             else
