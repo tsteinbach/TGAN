@@ -21,12 +21,9 @@ namespace DataLayerLogic
 		private string m_myConnectionString = null; 
 		SqlConnection m_myConnection = null;
 
-		public Buisinesses(string dbUser, string dataBase)
+		public Buisinesses(string connectionString)
 		{
-#warning muss vor Produktivnahme wieder einkommentiert werden
-            m_myConnectionString = dataBase + ";Integrated Security=false; User = " + dbUser + "; Password = Cpxopc11";
-			
-            //m_myConnectionString = dataBase+";Integrated Security=true; User = "+ dbUser +"; Password = lpalpa";
+            m_myConnectionString = connectionString;
 			m_myConnection = new SqlConnection(m_myConnectionString);
 		}
 

@@ -10,6 +10,7 @@ using System.Web.UI.HtmlControls;
 
 using DataLayerLogic;
 using System.Diagnostics;
+using System.Data.SqlClient;
 
 /// <summary>
 /// Summary description for TGANConfiguration
@@ -24,7 +25,13 @@ public class TGANConfiguration
         get
         {
             if (_dbAccess == null || String.IsNullOrEmpty(_dbAccess.conn.ConnectionString))
-                _dbAccess = new Buisinesses(ConfigurationManager.AppSettings["dbUser"], ConfigurationManager.ConnectionStrings["connectionStringName"].ConnectionString);
+            {
+                _dbAccess = new Buisinesses(new SqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings["connectionStringName"].ConnectionString)
+                                            {
+                                                UserID = ConfigurationManager.AppSettings["dbUser"],
+                                                Password = ConfigurationManager.AppSettings["pw"]
+                                            }.ToString());
+            }    
             return _dbAccess;
         }
     }
