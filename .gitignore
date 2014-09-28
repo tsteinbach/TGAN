@@ -31,3 +31,11 @@ BusinessLayerLogic/obj/Debug/BusinessLayerLogic.dll
 BusinessLayerLogic/obj/Debug/BusinessLayerLogic.pdb
 
 BusinessLayerLogic/obj/Debug/ResolveAssemblyReference.cache
+
+DataLayerLogic/obj/Debug/DataLayerLogic.dll
+
+DataLayerLogic/obj/Debug/DataLayerLogic.pdb
+
+Web/bin/DataLayerLogic.dll
+
+Web/bin/DataLayerLogic.pdb

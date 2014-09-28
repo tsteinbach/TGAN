@@ -263,7 +263,7 @@ namespace BusinessLayerLogic.Typemethods
         {
             GesamtStand gesamtStand;
             //30 Minutes is set to default
-            GetGesamtStandPerUser(out gesamtStand, 30);
+            GetGesamtStandPerUser(out gesamtStand);
 
             if(gesamtStand != null)
                 ((List<GesamtStand>)gesamtStandList).Add(gesamtStand);
@@ -286,7 +286,7 @@ namespace BusinessLayerLogic.Typemethods
                 return gDB.PunkteInsgesamt;
         }
 
-        public int GetGesamtStandPerUser(out GesamtStand gesamtStand, double timeToleranceAfterGameFinished)
+        public int GetGesamtStandPerUser(out GesamtStand gesamtStand)
         {
             int selectedRound = _Round.RoundNo; ;
             int totalCurrentRound = -10;

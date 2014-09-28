@@ -153,8 +153,9 @@ public class TippresultOverview : MemberInfomationBasePage, ITippresultOverview
         {
             tr = new TableRow();
             tippB = new TippBL(RoundOfImportance, SeasonOfImportance, m, GamesOfImportance, UserGroupOfImportance, TGANConfiguration.DBACCESS);
+            tippB.CheckResultAfterGameStart = TGANConfiguration.CheckResultsAfterGameStart;
             GesamtStand g;
-            tippB.GetGesamtStandPerUser(out g,TGANConfiguration.CheckResultsAfterGameStart);
+            tippB.GetGesamtStandPerUser(out g);
             gesamtStandList.Add(g);
         }
 
