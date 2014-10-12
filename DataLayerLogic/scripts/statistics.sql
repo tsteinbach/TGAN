@@ -1,7 +1,7 @@
 --'Home','Away','NotSet','Draw'
 
 -- Gruppierung nach Tipptendenz
-select m.[User],s.Season,t.Tipp, COUNT(0) as 'Count Tendenz'
+select s.Season,m.[User],t.Tipp, COUNT(0) as 'Count Tendenz'
 from Tipp t join member m on t.MemberID = m.ID 
 join Ansetzung a on a.ID = t.AnsetzungID
 join Spieltag sp on sp.ID = a.SpieltagID
