@@ -120,6 +120,13 @@ public class TippresultOverview : MemberInfomationBasePage, ITippresultOverview
 
     #endregion
 
+    private void SetActiveGesamtStandInsertUser()
+    {
+        ACTIVEUSERLIST.SingleOrDefault();
+
+        ACTIVEUSERLIST[ACTIVEMEMBER.ID] = ACTIVEMEMBER.UserName;
+    }
+
     private Table CreateGesamtstand()
     {
         int position = 0;
@@ -127,76 +134,112 @@ public class TippresultOverview : MemberInfomationBasePage, ITippresultOverview
         TippBL tippB = null;
 
         Table tbl = new Table();
-        tbl.CssClass = cssTippOverview;
+        bool isAllowedToWriteData = false;
         
-        TableHeaderRow thr = new TableHeaderRow();
-        TableHeaderCell th = null;
-        TableRow tr = null;
-        TableCell td = null;
-        
-        th = new TableHeaderCell(); th.CssClass = cssTH; th.Text = "Position"; thr.Cells.Add(th);
-        th = new TableHeaderCell(); th.CssClass = cssTH; th.Text = "Name"; thr.Cells.Add(th);
-        th = new TableHeaderCell(); th.CssClass = cssTH; th.Text = "Punkte insgesamt"; thr.Cells.Add(th);
-        th = new TableHeaderCell(); th.CssClass = cssTH; th.Text = "Richtige Tipps"; thr.Cells.Add(th);
-        th = new TableHeaderCell(); th.CssClass = cssTH; th.Text = "Falsche Tipps"; thr.Cells.Add(th);
-        thr.Cells.Add(th); th = new TableHeaderCell(); th.CssClass = cssTH; th.Text = "Echte Bank"; thr.Cells.Add(th);
-        th = new TableHeaderCell(); th.CssClass = cssTH; th.Text = "Unechte Bank"; thr.Cells.Add(th);
-        th = new TableHeaderCell(); th.CssClass = cssTH; th.Text = "Neuner-Tipp"; thr.Cells.Add(th);
-        thr.Cells.Add(th); th = new TableHeaderCell(); th.CssClass = cssTH; th.Text = "Nicht getippt"; thr.Cells.Add(th);
-
-        tbl.Rows.Add(thr);
-
-        List<Member> members = new MemberBL(TGANConfiguration.DBACCESS).GetAllMembers(UserGroupOfImportance, true, SeasonOfImportance); //TGANConfiguration.DBACCESS.GetAllUsers(UserGroupOfImportance);
-        List<GesamtStand> gesamtStandList = new List<GesamtStand>();
-        
-        foreach (Member m in members)
+        try
         {
-            tr = new TableRow();
-            tippB = new TippBL(RoundOfImportance, SeasonOfImportance, m, GamesOfImportance, UserGroupOfImportance, TGANConfiguration.DBACCESS);
-            tippB.CheckResultAfterGameStart = TGANConfiguration.CheckResultsAfterGameStart;
-            GesamtStand g;
-            tippB.GetGesamtStandPerUser(out g);
-            gesamtStandList.Add(g);
+            tbl.CssClass = cssTippOverview;
+        
+            TableHeaderRow thr = new TableHeaderRow();
+            TableHeaderCell th = null;
+            TableRow tr = null;
+            TableCell td = null;
+        
+            th = new TableHeaderCell(); th.CssClass = cssTH; th.Text = "Position"; thr.Cells.Add(th);
+            th = new TableHeaderCell(); th.CssClass = cssTH; th.Text = "Name"; thr.Cells.Add(th);
+            th = new TableHeaderCell(); th.CssClass = cssTH; th.Text = "Punkte insgesamt"; thr.Cells.Add(th);
+            th = new TableHeaderCell(); th.CssClass = cssTH; th.Text = "Richtige Tipps"; thr.Cells.Add(th);
+            th = new TableHeaderCell(); th.CssClass = cssTH; th.Text = "Falsche Tipps"; thr.Cells.Add(th);
+            thr.Cells.Add(th); th = new TableHeaderCell(); th.CssClass = cssTH; th.Text = "Echte Bank"; thr.Cells.Add(th);
+            th = new TableHeaderCell(); th.CssClass = cssTH; th.Text = "Unechte Bank"; thr.Cells.Add(th);
+            th = new TableHeaderCell(); th.CssClass = cssTH; th.Text = "Neuner-Tipp"; thr.Cells.Add(th);
+            thr.Cells.Add(th); th = new TableHeaderCell(); th.CssClass = cssTH; th.Text = "Nicht getippt"; thr.Cells.Add(th);
+
+            tbl.Rows.Add(thr);
+
+            List<Member> members = new MemberBL(TGANConfiguration.DBACCESS).GetAllMembers(UserGroupOfImportance, true, SeasonOfImportance); 
+            List<GesamtStand> gesamtStandList = new List<GesamtStand>();
+
+            isAllowedToWriteData = IsAllowedToWriteTotalData();
+
+            foreach (Member m in members)
+            {
+                tr = new TableRow();
+                tippB = new TippBL(RoundOfImportance, SeasonOfImportance, m, GamesOfImportance, UserGroupOfImportance, TGANConfiguration.DBACCESS);
+                tippB.CheckResultAfterGameStart = TGANConfiguration.CheckResultsAfterGameStart;
+                GesamtStand g;
+
+                tippB.GetGesamtStandPerUser(isAllowedToWriteData, out g);
+                gesamtStandList.Add(g);
+            }
+
+        
+
+            GesamtStandComparer gc = new GesamtStandComparer();
+            gesamtStandList.Sort(gc);
+
+            int last_WholePoints = -1;
+            int last_pos = -1;
+            for (int i = 0; i < gesamtStandList.Count; i++)
+            {
+                tr = new TableRow();
+                if (i % 2 == 0)
+                    tr.CssClass = "alternateRow";
+                else
+                    tr.CssClass = "nonAlternateRow";
+
+                position++;
+                if (gesamtStandList[i].PunkteInsgesamt.CompareTo(last_WholePoints) == 0)
+                {
+                    td = new TableCell(); td.Text = last_pos.ToString(); tr.Cells.Add(td);
+                }
+                else
+                {
+                    last_pos = position;
+                    td = new TableCell(); td.Text = position.ToString(); ; tr.Cells.Add(td);
+                }
+
+                td = new TableCell(); td.Text = String.Format("{0}",gesamtStandList[i].Member.UserName); tr.Cells.Add(td);
+                td = new TableCell(); td.Text = gesamtStandList[i].PunkteInsgesamt.ToString(); tr.Cells.Add(td);
+                td = new TableCell(); td.Text = gesamtStandList[i].RichtigeTipps.ToString(); tr.Cells.Add(td);
+                td = new TableCell(); td.Text = gesamtStandList[i].FalscheTipps.ToString(); tr.Cells.Add(td);
+                td = new TableCell(); td.Text = gesamtStandList[i].EchteBank.ToString(); tr.Cells.Add(td);
+                td = new TableCell(); td.Text = gesamtStandList[i].UnechteBank.ToString(); tr.Cells.Add(td);
+                td = new TableCell(); td.Text = gesamtStandList[i].NeunerTipp.ToString(); tr.Cells.Add(td);
+                td = new TableCell(); td.Text = gesamtStandList[i].NichtGetippt.ToString(); tr.Cells.Add(td);
+
+                tbl.Rows.Add(tr);
+                last_WholePoints = gesamtStandList[i].PunkteInsgesamt;
+            }
         }
-
-        GesamtStandComparer gc = new GesamtStandComparer();
-        gesamtStandList.Sort(gc);
-
-        int last_WholePoints = -1;
-        int last_pos = -1;
-        for (int i = 0; i < gesamtStandList.Count; i++)
+        catch(Exception e)
         {
-            tr = new TableRow();
-            if (i % 2 == 0)
-                tr.CssClass = "alternateRow";
-            else
-                tr.CssClass = "nonAlternateRow";
-
-            position++;
-            if (gesamtStandList[i].PunkteInsgesamt.CompareTo(last_WholePoints) == 0)
-            {
-                td = new TableCell(); td.Text = last_pos.ToString(); tr.Cells.Add(td);
-            }
-            else
-            {
-                last_pos = position;
-                td = new TableCell(); td.Text = position.ToString(); ; tr.Cells.Add(td);
-            }
-
-            td = new TableCell(); td.Text = String.Format("{0}",gesamtStandList[i].Member.UserName); tr.Cells.Add(td);
-            td = new TableCell(); td.Text = gesamtStandList[i].PunkteInsgesamt.ToString(); tr.Cells.Add(td);
-            td = new TableCell(); td.Text = gesamtStandList[i].RichtigeTipps.ToString(); tr.Cells.Add(td);
-            td = new TableCell(); td.Text = gesamtStandList[i].FalscheTipps.ToString(); tr.Cells.Add(td);
-            td = new TableCell(); td.Text = gesamtStandList[i].EchteBank.ToString(); tr.Cells.Add(td);
-            td = new TableCell(); td.Text = gesamtStandList[i].UnechteBank.ToString(); tr.Cells.Add(td);
-            td = new TableCell(); td.Text = gesamtStandList[i].NeunerTipp.ToString(); tr.Cells.Add(td);
-            td = new TableCell(); td.Text = gesamtStandList[i].NichtGetippt.ToString(); tr.Cells.Add(td);
-
-            tbl.Rows.Add(tr);
-            last_WholePoints = gesamtStandList[i].PunkteInsgesamt;
+            throw e;
+        }
+        finally
+        {
+            if (isAllowedToWriteData)
+                TGANConfiguration.DBACCESS.RemoveGroupFromCurrentTotalWriterList(ACTIVEMEMBER.UserGroupID); 
         }
 
         return tbl;
+
+                    
+    }
+
+    private bool IsAllowedToWriteTotalData()
+    {
+        var isBlocked = TGANConfiguration.DBACCESS.IsGroupInCurrentTotalWriterList(ACTIVEMEMBER.UserGroupID);
+
+        if (isBlocked)
+        {
+            return false;
+        }
+        else 
+        {
+            TGANConfiguration.DBACCESS.InsertGroupInCurrentTotalWriterList(ACTIVEMEMBER.UserGroupID);
+            return true;
+        }
     }
 
     private Table CreateTippResultsOfAllMembers()

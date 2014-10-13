@@ -32,6 +32,21 @@ namespace DataLayerLogic
 		    get{return m_myConnection;}
 		}
 
+        public bool IsGroupInCurrentTotalWriterList(Guid userGroupId)
+        {
+            return new GesamtstandWriterOverview(m_myConnection).IsGroupInCurrentTotalWriterList(userGroupId);
+		}
+
+        public void RemoveGroupFromCurrentTotalWriterList(Guid userGroupId)
+        {
+            new GesamtstandWriterOverview(m_myConnection).RemoveGroupFromCurrentTotalWriterList(userGroupId);
+        }
+
+        public void InsertGroupInCurrentTotalWriterList(Guid userGroupId)
+        {
+            new GesamtstandWriterOverview(m_myConnection).InsertGroupInCurrentTotalWriterList(userGroupId);
+        }
+
 		public DataSet GetQueryResult(string query)
 		{
             using (SqlConnection c = new SqlConnection(conn.ConnectionString))

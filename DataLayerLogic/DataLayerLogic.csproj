@@ -143,6 +143,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Gesamtstands.cs" />
+    <Compile Include="GesamtstandWriterOverview.cs" />
     <Compile Include="Members.cs">
       <SubType>Code</SubType>
     </Compile>

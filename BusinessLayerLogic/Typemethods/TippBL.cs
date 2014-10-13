@@ -263,7 +263,7 @@ namespace BusinessLayerLogic.Typemethods
         {
             GesamtStand gesamtStand;
             //30 Minutes is set to default
-            GetGesamtStandPerUser(out gesamtStand);
+            GetGesamtStandPerUser(false,out gesamtStand);
 
             if(gesamtStand != null)
                 ((List<GesamtStand>)gesamtStandList).Add(gesamtStand);
@@ -286,7 +286,7 @@ namespace BusinessLayerLogic.Typemethods
                 return gDB.PunkteInsgesamt;
         }
 
-        public int GetGesamtStandPerUser(out GesamtStand gesamtStand)
+        public int GetGesamtStandPerUser(bool isAllowedToWriteTotalData ,out GesamtStand gesamtStand)
         {
             int selectedRound = _Round.RoundNo; ;
             int totalCurrentRound = -10;
@@ -323,7 +323,8 @@ namespace BusinessLayerLogic.Typemethods
                     if (round.RoundNo == selectedRound)
                         totalCurrentRound = helper.PunkteInsgesamt;
 
-                    helper.insertGesamtStandInDB(false, this._dbAccess);
+                    if(isAllowedToWriteTotalData)
+                        helper.insertGesamtStandInDB(false, this._dbAccess);
                 }
                 else if (isRoundInDB)
                 {

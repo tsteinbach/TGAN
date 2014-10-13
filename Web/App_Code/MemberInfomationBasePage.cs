@@ -52,7 +52,7 @@ public class MemberInfomationBasePage : BasePage
         get
         {
             if (Application["ActiveUserList"] == null)
-                Application["ActiveUserList"] = new System.Collections.Generic.Dictionary<Guid, string>();
+                Application["ActiveUserList"] = new Dictionary<Guid, string>();
 
             return (Dictionary<Guid, string>)Application["ActiveUserList"];
         }

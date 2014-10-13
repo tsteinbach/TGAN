@@ -78,8 +78,7 @@ public partial class Login : BasePage
                 lstSpieltag.SelectedIndex = ACTUALROUND.RoundNo - 1;
 
                 ActiveTabIndex = 0;
-                //bigTippOverview.ActiveTab = bigTippOverview.Tabs[ActiveTabIndex];
-
+               
                 CheckOfForgottenTipp();
                
                 try
