@@ -76,6 +76,15 @@ namespace DataLayerLogic
         public void insertGesamtstandsRow(Guid memberID, Guid roundId, int echteBank, int falscheTipps, int NeunerTipp
             , int nichtgetippt, int punkteInsgesamt, int richtigeTipps, int unechteBank)
         {
+            if (echteBank == 0 &&
+                falscheTipps == 0 &&
+                NeunerTipp == 0 &&
+                nichtgetippt == 0 &&
+                punkteInsgesamt == 0 &&
+                richtigeTipps == 0 &&
+                unechteBank == 0)
+                return;
+
             Gesamtstands g = new Gesamtstands(m_myConnection, roundId, memberID);
             
             g.echteBank = echteBank;
