@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AnalyticsModelStoreContainer" CdmEntityContainer="TGANAnalyticsEntities">
+    <FunctionImportMapping FunctionImportName="AnalyticsNeuner" FunctionName="AnalyticsModel.Store.AnalyticsNeuner">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AnalyticsModel.AnalyticsNeuner_Result">
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="Season" ColumnName="Season" />
+          <ScalarProperty Name="Count_Neuner" ColumnName="Count Neuner" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="UserGroups">
+      <EntityTypeMapping TypeName="AnalyticsModel.UserGroup">
+        <MappingFragment StoreEntitySet="UserGroup">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

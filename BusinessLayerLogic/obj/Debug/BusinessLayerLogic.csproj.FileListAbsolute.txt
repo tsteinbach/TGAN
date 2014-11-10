@@ -40,3 +40,9 @@ C:\DOT NET\TGAN_GIT_REPOSITORY\TGAN\Web\bin\BusinessLayerLogic.pdb
 C:\DOT NET\TGAN_GIT_REPOSITORY\TGAN\BusinessLayerLogic\obj\Debug\ResolveAssemblyReference.cache
 C:\DOT NET\TGAN_GIT_REPOSITORY\TGAN\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.dll
 C:\DOT NET\TGAN_GIT_REPOSITORY\TGAN\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.pdb
+C:\DOTNET\_GIT\TGAN\Web\bin\BusinessLayerLogic.dll.config
+C:\DOTNET\_GIT\TGAN\Web\bin\BusinessLayerLogic.dll
+C:\DOTNET\_GIT\TGAN\Web\bin\BusinessLayerLogic.pdb
+C:\DOTNET\_GIT\TGAN\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.csprojResolveAssemblyReference.cache
+C:\DOTNET\_GIT\TGAN\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.dll
+C:\DOTNET\_GIT\TGAN\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.pdb

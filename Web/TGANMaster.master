@@ -45,6 +45,7 @@
                         <li><a class="menue" id="lnkHome" href="Default.aspx">Startseite</a><br /></li>
                         <li><a class="menue" id="lnkTippMng" href="Tipp-Manager.aspx">Tipps eintragen</a><br /></li>
                         <li><a class="menue" id="lnkGesamtstand" href="Gesamtstand.aspx">Tippübersicht</a><br /></li>
+                        <li><a class="menue" id="lnkAnalytics" href="Analytics/TganStatistics.html">Analytics</a><br /></li>
                         <li><a class="menue" id="lnkMemberInf" href="Member-Information.aspx">Mitgliederinfos</a><br /></li>
                         <li><a class="menue" id="lnkForum" href="Forum_TGAN.aspx">Forum</a></li>
                     </ul>

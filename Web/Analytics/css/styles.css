@@ -1,0 +1,28 @@
+
+.my-expander-iconlink {
+    color: white;
+    cursor: pointer;
+    margin-left: 100px;
+}
+
+.my-expander-iconlink:hover{
+    color: white;
+}
+
+.my-expander-iconlink:active{
+    color: white;
+}
+
+.my-expander-wrapper {
+    margin-top:10px;
+    margin-bottom:20px;
+}
+
+.my-expander-header {
+    padding:10px;
+    border-radius: 10px 10px 0 0;
+    background-color: #2a6496;
+    color:#ffffff;
+}
+
+

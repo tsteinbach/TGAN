@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="tganStatistics">
+	<head>
+		<title>TGAN Statistics Portal</title>
+
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+		<link rel="stylesheet" href="css/styles.css" />
+
+		<base href="/Analytics/TganStatistics.html">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	</head>
+
+	<body>
+
+		<header>
+			<nav class="navbar navbar-default">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">TGAN Statistics</a>
+				</div>
+			</nav>
+		</header>
+
+		<div id="main">
+
+			<!-- angular templating -->
+			<!-- this is where content will be injected -->
+			<div ng-view></div>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+		<script src="Scripts/tganApp.js"></script>
+		<script src="Scripts/Controller/tganTendencyController.js"></script>
+		<script src="Scripts/Controller/tganEchteBankController.js"></script>
+		<script src="Scripts/Controller/tganStartController.js"></script>
+		<script src="Scripts/Controller/tganUnechteBankController.js"></script>
+		<script src="Scripts/Controller/tganNeunerTippController.js"></script>
+        <script src="Scripts/Controller/tganGroupController.js"></script>
+		<script src="Scripts/service/tganService.js"></script>
+		<script src="Scripts/directive/expander.js"></script>
+		<script src="Scripts/directive/close.js"></script>
+        <script src="Scripts/directive/group.js"></script>
+
+	</body>
+</html>

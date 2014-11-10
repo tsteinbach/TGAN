@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AnalyticsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'Fussballtipp-tgan.dbo.UserGroup' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+  <EntityType Name="UserGroup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <Function Name="AnalyticsNeuner" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserGroupId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <EntityContainer Name="AnalyticsModelStoreContainer">
+    <EntitySet Name="UserGroup" EntityType="Self.UserGroup" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[UserGroup].[ID] AS [ID], 
+[UserGroup].[Name] AS [Name]
+FROM [dbo].[UserGroup] AS [UserGroup]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
