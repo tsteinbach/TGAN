@@ -9,7 +9,16 @@ Warnung 6002: Für Tabelle/Sicht 'Fussballtipp-tgan.dbo.UserGroup' ist kein Prim
     <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="150" />
   </EntityType>
+  <Function Name="AnalyticsEchte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserGroupId" Type="uniqueidentifier" Mode="In" />
+  </Function>
   <Function Name="AnalyticsNeuner" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserGroupId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="AnalyticsTendency" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserGroupId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="AnalyticsUnechte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="UserGroupId" Type="uniqueidentifier" Mode="In" />
   </Function>
   <EntityContainer Name="AnalyticsModelStoreContainer">

@@ -6,8 +6,9 @@
 tgan.controller("tganEchteBankController", function tganEchteBankController($scope,tganService) {
    "use strict";
 
-	tganService.getEchteBankData().then(function (userData) {
-         $scope.names = userData;
-      });
-				
+   $scope.loadData = function (userGroup) {
+       tganService.getEchteBankData(userGroup.ID).then(function (analyticsData) {
+           $scope.names = analyticsData;
+       });
+   }
 });

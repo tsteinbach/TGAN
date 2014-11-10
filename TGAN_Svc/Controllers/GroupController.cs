@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using TGAN_Svc.Models;
+using TGAN_Svc.Models.DTO;
 
 namespace TGAN_Svc.Controllers
 {

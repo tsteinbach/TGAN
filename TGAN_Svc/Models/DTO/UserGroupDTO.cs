@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace TGAN_Svc.Models
+namespace TGAN_Svc.Models.DTO
 {
     public class UserGroupDTO
     {

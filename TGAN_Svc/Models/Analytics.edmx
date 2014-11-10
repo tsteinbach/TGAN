@@ -14,7 +14,16 @@ Warnung 6002: Für Tabelle/Sicht 'Fussballtipp-tgan.dbo.UserGroup' ist kein Prim
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="150" />
         </EntityType>
+        <Function Name="AnalyticsEchte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserGroupId" Type="uniqueidentifier" Mode="In" />
+        </Function>
         <Function Name="AnalyticsNeuner" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserGroupId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="AnalyticsTendency" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserGroupId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="AnalyticsUnechte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserGroupId" Type="uniqueidentifier" Mode="In" />
         </Function>
         <EntityContainer Name="AnalyticsModelStoreContainer">
@@ -34,6 +43,15 @@ FROM [dbo].[UserGroup] AS [UserGroup]</DefiningQuery>
           <Parameter Name="UserGroupId" Mode="In" Type="Guid" />
           </FunctionImport>
           <EntitySet Name="UserGroups" EntityType="AnalyticsModel.UserGroup" />
+          <FunctionImport Name="AnalyticsEchte" ReturnType="Collection(AnalyticsModel.AnalyticsEchte_Result)">
+            <Parameter Name="UserGroupId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="AnalyticsTendency" ReturnType="Collection(AnalyticsModel.AnalyticsTendency_Result)">
+            <Parameter Name="UserGroupId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="AnalyticsUnechte" ReturnType="Collection(AnalyticsModel.AnalyticsUnechte_Result)">
+            <Parameter Name="UserGroupId" Mode="In" Type="Guid" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="AnalyticsNeuner_Result">
           <Property Type="String" Name="User" Nullable="false" MaxLength="50" />
@@ -47,6 +65,22 @@ FROM [dbo].[UserGroup] AS [UserGroup]</DefiningQuery>
           <Property Name="ID" Type="Guid" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
         </EntityType>
+        <ComplexType Name="AnalyticsEchte_Result">
+          <Property Type="String" Name="User" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Season" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="Count_Echte_Bank" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="AnalyticsTendency_Result">
+          <Property Type="String" Name="Season" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="User" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Tipp" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Count_Tendenz" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="AnalyticsUnechte_Result">
+          <Property Type="String" Name="User" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Season" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="Count_Unechte_Bank" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -70,6 +104,34 @@ FROM [dbo].[UserGroup] AS [UserGroup]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AnalyticsEchte" FunctionName="AnalyticsModel.Store.AnalyticsEchte">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AnalyticsModel.AnalyticsEchte_Result">
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="Season" ColumnName="Season" />
+                <ScalarProperty Name="Count_Echte_Bank" ColumnName="Count Echte Bank" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AnalyticsTendency" FunctionName="AnalyticsModel.Store.AnalyticsTendency">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AnalyticsModel.AnalyticsTendency_Result">
+                <ScalarProperty Name="Season" ColumnName="Season" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="Tipp" ColumnName="Tipp" />
+                <ScalarProperty Name="Count_Tendenz" ColumnName="Count Tendenz" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AnalyticsUnechte" FunctionName="AnalyticsModel.Store.AnalyticsUnechte">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AnalyticsModel.AnalyticsUnechte_Result">
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="Season" ColumnName="Season" />
+                <ScalarProperty Name="Count_Unechte_Bank" ColumnName="Count Unechte Bank" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

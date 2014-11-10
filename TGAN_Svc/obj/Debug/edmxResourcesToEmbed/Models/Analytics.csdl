@@ -5,6 +5,15 @@
       <Parameter Name="UserGroupId" Mode="In" Type="Guid" />
     </FunctionImport>
     <EntitySet Name="UserGroups" EntityType="AnalyticsModel.UserGroup" />
+    <FunctionImport Name="AnalyticsEchte" ReturnType="Collection(AnalyticsModel.AnalyticsEchte_Result)">
+      <Parameter Name="UserGroupId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="AnalyticsTendency" ReturnType="Collection(AnalyticsModel.AnalyticsTendency_Result)">
+      <Parameter Name="UserGroupId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="AnalyticsUnechte" ReturnType="Collection(AnalyticsModel.AnalyticsUnechte_Result)">
+      <Parameter Name="UserGroupId" Mode="In" Type="Guid" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="AnalyticsNeuner_Result">
     <Property Type="String" Name="User" Nullable="false" MaxLength="50" />
@@ -18,4 +27,20 @@
     <Property Name="ID" Type="Guid" Nullable="false" />
     <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
   </EntityType>
+  <ComplexType Name="AnalyticsEchte_Result">
+    <Property Type="String" Name="User" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Season" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="Count_Echte_Bank" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="AnalyticsTendency_Result">
+    <Property Type="String" Name="Season" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="User" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Tipp" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Count_Tendenz" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="AnalyticsUnechte_Result">
+    <Property Type="String" Name="User" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Season" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="Count_Unechte_Bank" Nullable="true" />
+  </ComplexType>
 </Schema>

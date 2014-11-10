@@ -38,5 +38,32 @@ namespace TGAN_Svc.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AnalyticsNeuner_Result>("AnalyticsNeuner", userGroupIdParameter);
         }
+    
+        public virtual ObjectResult<AnalyticsEchte_Result> AnalyticsEchte(Nullable<System.Guid> userGroupId)
+        {
+            var userGroupIdParameter = userGroupId.HasValue ?
+                new ObjectParameter("UserGroupId", userGroupId) :
+                new ObjectParameter("UserGroupId", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AnalyticsEchte_Result>("AnalyticsEchte", userGroupIdParameter);
+        }
+    
+        public virtual ObjectResult<AnalyticsTendency_Result> AnalyticsTendency(Nullable<System.Guid> userGroupId)
+        {
+            var userGroupIdParameter = userGroupId.HasValue ?
+                new ObjectParameter("UserGroupId", userGroupId) :
+                new ObjectParameter("UserGroupId", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AnalyticsTendency_Result>("AnalyticsTendency", userGroupIdParameter);
+        }
+    
+        public virtual ObjectResult<AnalyticsUnechte_Result> AnalyticsUnechte(Nullable<System.Guid> userGroupId)
+        {
+            var userGroupIdParameter = userGroupId.HasValue ?
+                new ObjectParameter("UserGroupId", userGroupId) :
+                new ObjectParameter("UserGroupId", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AnalyticsUnechte_Result>("AnalyticsUnechte", userGroupIdParameter);
+        }
     }
 }

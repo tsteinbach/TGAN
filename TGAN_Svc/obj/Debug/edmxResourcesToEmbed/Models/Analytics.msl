@@ -18,5 +18,33 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AnalyticsEchte" FunctionName="AnalyticsModel.Store.AnalyticsEchte">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AnalyticsModel.AnalyticsEchte_Result">
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="Season" ColumnName="Season" />
+          <ScalarProperty Name="Count_Echte_Bank" ColumnName="Count Echte Bank" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AnalyticsTendency" FunctionName="AnalyticsModel.Store.AnalyticsTendency">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AnalyticsModel.AnalyticsTendency_Result">
+          <ScalarProperty Name="Season" ColumnName="Season" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="Tipp" ColumnName="Tipp" />
+          <ScalarProperty Name="Count_Tendenz" ColumnName="Count Tendenz" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AnalyticsUnechte" FunctionName="AnalyticsModel.Store.AnalyticsUnechte">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AnalyticsModel.AnalyticsUnechte_Result">
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="Season" ColumnName="Season" />
+          <ScalarProperty Name="Count_Unechte_Bank" ColumnName="Count Unechte Bank" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

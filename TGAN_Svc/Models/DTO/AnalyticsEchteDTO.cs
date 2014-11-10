@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace TGAN_Svc.Models
+namespace TGAN_Svc.Models.DTO
 {
-    public class AnalyticsNeunerDTO
+    public class AnalyticsEchteDTO
     {
         public string User { get; set; }
         public string Season { get; set; }

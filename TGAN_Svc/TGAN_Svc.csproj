@@ -152,8 +152,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\UnechteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
+    <Compile Include="Controllers\EchteController.cs" />
+    <Compile Include="Controllers\TendencyController.cs" />
     <Compile Include="Controllers\NeunerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -173,11 +176,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Analytics.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\DTO\AnalyticsUnechteDTO.cs" />
+    <Compile Include="Models\AnalyticsEchte_Result.cs">
+      <DependentUpon>Analytics.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DTO\AnalyticsEchteDTO.cs" />
+    <Compile Include="Models\DTO\AnalyticsTendencyDTO.cs" />
+    <Compile Include="Models\AnalyticsTendency_Result.cs">
+      <DependentUpon>Analytics.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AnalyticsUnechte_Result.cs">
+      <DependentUpon>Analytics.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserGroup.cs">
       <DependentUpon>Analytics.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserGroupDTO.cs" />
-    <Compile Include="Models\AnalyticsNeunerDTO.cs" />
+    <Compile Include="Models\DTO\UserGroupDTO.cs" />
+    <Compile Include="Models\DTO\AnalyticsNeunerDTO.cs" />
     <Compile Include="Models\AnalyticsNeuner_Result.cs">
       <DependentUpon>Analytics.tt</DependentUpon>
     </Compile>
