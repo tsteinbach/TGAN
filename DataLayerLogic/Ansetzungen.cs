@@ -158,17 +158,6 @@ namespace DataLayerLogic
 
 		public void GetDistictAvailableRounds(Season season, List<Round> rounds)
 		{
-            //using (SqlConnection c = new SqlConnection(m_conn.ConnectionString))
-            //{
-            //    SqlCommand sqlDistinctAvailableRounds = new SqlCommand(SELECTAVAILABLEROUNDS, c);
-            //    sqlDistinctAvailableRounds.Parameters.Add("@Saison", SqlDbType.UniqueIdentifier).Value = season.ID;
-
-            //    c.Open();
-            //    SqlDataReader reader = sqlDistinctAvailableRounds.ExecuteReader();
-            //    while (reader.Read())
-            //        rounds.Add(new Round(reader.GetGuid(0), reader.GetGuid(1), reader.GetInt32(0)));
-            //    c.Close();
-            //}
             throw new NotImplementedException("GetDistictAvailableRounds is not implemented");
 		}
 

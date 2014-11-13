@@ -562,40 +562,51 @@ namespace BusinessLayerLogic.Typemethods
         /// <returns></returns>
         private static TippState GetTippResult(string result, TippValue userTipp, out TippValue target)
         {
+            target = DetermineResultOfGame(result);
+
+            if (target == TippValue.NotSet)
+                return TippState.NotReadable;
+            else if (userTipp == target)
+                return TippState.True;
+             else
+                return TippState.False;
+        }
+
+        public static TippValue DetermineResultOfGame(string resultString)
+        {
             string[] endergebins = null;
             int toreHeim = -1;
             int toreAusw = -1;
-            target = TippValue.NotSet;
+           
+            if (String.IsNullOrEmpty(resultString))
+                return TippValue.NotSet;
 
-            if (!String.IsNullOrEmpty(result))
+            endergebins = GetFinalResultArray(resultString);
+
+            if ((!Int32.TryParse(endergebins[0], out toreHeim)) || (!Int32.TryParse(endergebins[1], out toreAusw)))
+                return TippValue.NotSet;
+
+            if (toreHeim == toreAusw) return TippValue.Draw;
+            else if (toreHeim > toreAusw) return TippValue.Home;
+            else if(toreHeim < toreAusw) return TippValue.Away;
+
+            return TippValue.NotSet;
+        }
+
+        public static string[] GetFinalResultArray(string resultString)
+        {
+            int index = resultString.IndexOf(STR_TRENNUNG_ENDERGEBNIS_HALBZEITSTAND);
+            if (index == -1)
             {
-                int index = result.IndexOf(STR_TRENNUNG_ENDERGEBNIS_HALBZEITSTAND);
+                index = resultString.IndexOf(CHR_TRENNUNG_ENDERGEBNIS_HALBZEITSTAND);
+
                 if (index == -1)
-                {
-                    index = result.IndexOf(CHR_TRENNUNG_ENDERGEBNIS_HALBZEITSTAND);
-                
-                    if (index == -1)
-                        throw new Exception("Result could not be parsed");
-                    //wegen Leerzeichen
-                    index--;
-                }
-
-                endergebins = result.Substring(0, index).Split(':');
-                
-                if((!Int32.TryParse(endergebins[0],out toreHeim)) || (!Int32.TryParse(endergebins[1],out toreAusw)))
-                    return TippState.NotReadable;
-
-                if (toreHeim == toreAusw) target = TippValue.Draw;
-                else if (toreHeim > toreAusw) target = TippValue.Home;
-                else if (toreHeim < toreAusw) target = TippValue.Away;
-
-                if (userTipp == target)
-                    return TippState.True;
-                else
-                    return TippState.False;
+                    throw new Exception("Result could not be parsed");
+                //wegen Leerzeichen
+                index--;
             }
-            else
-                return TippState.NotReadable;
+
+            return resultString.Substring(0, index).Split(':');
         }
 
         private TippState IsBankTipp(RoundGame game,TippValue userTipp)

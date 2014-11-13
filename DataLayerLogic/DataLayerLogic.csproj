@@ -199,7 +199,6 @@
       <SubType>Designer</SubType>
     </Content>
     <None Include="app.config" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="DataSets\ForumData.xsc">
       <DependentUpon>ForumData.xsd</DependentUpon>
     </None>

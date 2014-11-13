@@ -46,5 +46,42 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AnalyticsResultHistory" FunctionName="AnalyticsModel.Store.AnalyticsResultHistory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AnalyticsModel.AnalyticsResultHistory_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="result" ColumnName="result" />
+          <ScalarProperty Name="Spieltag" ColumnName="Spieltag" />
+          <ScalarProperty Name="Season" ColumnName="Season" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetGamesWithTeamName" FunctionName="AnalyticsModel.Store.GetGamesWithTeamName">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AnalyticsModel.GetGamesWithTeamName_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Zeit" ColumnName="Zeit" />
+          <ScalarProperty Name="Heim_Team" ColumnName="Heim_Team" />
+          <ScalarProperty Name="Gast_Team" ColumnName="Gast_Team" />
+          <ScalarProperty Name="SpieltagID" ColumnName="SpieltagID" />
+          <ScalarProperty Name="Spiel" ColumnName="Spiel" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="TeamID_home" ColumnName="TeamID_home" />
+          <ScalarProperty Name="TeamID_away" ColumnName="TeamID_away" />
+          <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
+          <ScalarProperty Name="AwayTeam" ColumnName="AwayTeam" />
+          <ScalarProperty Name="HomeTeam" ColumnName="HomeTeam" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="RoundsOfActualSeasons">
+      <EntityTypeMapping TypeName="AnalyticsModel.RoundsOfActualSeason">
+        <MappingFragment StoreEntitySet="RoundsOfActualSeason">
+          <ScalarProperty Name="Spieltag" ColumnName="Spieltag" />
+          <ScalarProperty Name="SeasonID" ColumnName="SeasonID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

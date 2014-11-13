@@ -152,6 +152,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\RoundController.cs" />
+    <Compile Include="Controllers\RoundResultController.cs" />
     <Compile Include="Controllers\UnechteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
@@ -176,6 +178,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Analytics.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\AnalyticsResultHistory_Result.cs">
+      <DependentUpon>Analytics.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DTO\AnalyticsResultHistoryDetailDTO.cs" />
+    <Compile Include="Models\DTO\AnalyticsResultHistoryDTO.cs" />
     <Compile Include="Models\DTO\AnalyticsUnechteDTO.cs" />
     <Compile Include="Models\AnalyticsEchte_Result.cs">
       <DependentUpon>Analytics.tt</DependentUpon>
@@ -186,6 +193,13 @@
       <DependentUpon>Analytics.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AnalyticsUnechte_Result.cs">
+      <DependentUpon>Analytics.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DTO\RoundDTO.cs" />
+    <Compile Include="Models\GetGamesWithTeamName_Result.cs">
+      <DependentUpon>Analytics.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RoundsOfActualSeason.cs">
       <DependentUpon>Analytics.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserGroup.cs">
@@ -231,7 +245,16 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLayerLogic\BusinessLayerLogic.csproj">
+      <Project>{b101f302-9efb-4d89-80e6-cdf20ee9b894}</Project>
+      <Name>BusinessLayerLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataLayerLogic\DataLayerLogic.csproj">
+      <Project>{f1feaac1-7852-49d4-b2a7-4891588eeda2}</Project>
+      <Name>DataLayerLogic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

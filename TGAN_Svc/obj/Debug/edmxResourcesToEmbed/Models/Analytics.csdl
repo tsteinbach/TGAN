@@ -14,6 +14,14 @@
     <FunctionImport Name="AnalyticsUnechte" ReturnType="Collection(AnalyticsModel.AnalyticsUnechte_Result)">
       <Parameter Name="UserGroupId" Mode="In" Type="Guid" />
     </FunctionImport>
+    <FunctionImport Name="AnalyticsResultHistory" ReturnType="Collection(AnalyticsModel.AnalyticsResultHistory_Result)">
+      <Parameter Name="teamHome" Mode="In" Type="Guid" />
+      <Parameter Name="teamAway" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="GetGamesWithTeamName" ReturnType="Collection(AnalyticsModel.GetGamesWithTeamName_Result)">
+      <Parameter Name="roundId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <EntitySet Name="RoundsOfActualSeasons" EntityType="AnalyticsModel.RoundsOfActualSeason" />
   </EntityContainer>
   <ComplexType Name="AnalyticsNeuner_Result">
     <Property Type="String" Name="User" Nullable="false" MaxLength="50" />
@@ -43,4 +51,34 @@
     <Property Type="String" Name="Season" Nullable="false" MaxLength="20" />
     <Property Type="Int32" Name="Count_Unechte_Bank" Nullable="true" />
   </ComplexType>
+  <ComplexType Name="AnalyticsResultHistory_Result">
+    <Property Type="Guid" Name="id" Nullable="false" />
+    <Property Type="String" Name="result" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Spieltag" Nullable="false" />
+    <Property Type="String" Name="Season" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="GetGamesWithTeamName_Result">
+    <Property Type="Guid" Name="ID" Nullable="false" />
+    <Property Type="DateTime" Name="Zeit" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Heim_Team" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Gast_Team" Nullable="true" MaxLength="50" />
+    <Property Type="Guid" Name="SpieltagID" Nullable="false" />
+    <Property Type="Int32" Name="Spiel" Nullable="false" />
+    <Property Type="String" Name="Result" Nullable="true" MaxLength="50" />
+    <Property Type="Guid" Name="TeamID_home" Nullable="true" />
+    <Property Type="Guid" Name="TeamID_away" Nullable="true" />
+    <Property Type="Boolean" Name="IsHidden" Nullable="true" />
+    <Property Type="String" Name="AwayTeam" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="HomeTeam" Nullable="true" MaxLength="500" />
+  </ComplexType>
+  <EntityType Name="RoundsOfActualSeason">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="SeasonID" />
+      <PropertyRef Name="Spieltag" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="SeasonID" Type="Guid" Nullable="false" />
+    <Property Name="Spieltag" Type="Int32" Nullable="false" />
+  </EntityType>
 </Schema>

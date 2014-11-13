@@ -14,6 +14,12 @@
 
 	    this.serviceApiUrl = "http://localhost:49512/api";
 
+	    this.getGameHistoryAggregated = function (roundId) {
+	        return $http.get(this.buildSvcUrl(roundId, "RoundResult")).then(function (response) {
+	            return response.data;
+	        });
+	    };
+
 	    this.getTendenzData = function (groupId) {
 	        return $http.get(this.buildSvcUrl(groupId,"tendency")).then(function (response) {
 				return response.data;
@@ -44,9 +50,15 @@
 		    });
 		};
 
-		this.buildSvcUrl = function(groupId, methode){
+		this.getRoundsOfActualSeason = function () {
+		    return $http.get(this.serviceApiUrl + "/round").then(function (response) {
+		        return response.data;
+		    });
+		};
 
-		    return this.serviceApiUrl + "/" + methode + "/" + groupId;
+		this.buildSvcUrl = function(parameter, methode){
+
+		    return this.serviceApiUrl + "/" + methode + "/" + parameter;
 		}
 	}
 

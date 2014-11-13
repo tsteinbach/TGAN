@@ -29,6 +29,7 @@ namespace TGAN_Svc.Models
         }
     
         public DbSet<UserGroup> UserGroups { get; set; }
+        public DbSet<RoundsOfActualSeason> RoundsOfActualSeasons { get; set; }
     
         public virtual ObjectResult<AnalyticsNeuner_Result> AnalyticsNeuner(Nullable<System.Guid> userGroupId)
         {
@@ -64,6 +65,28 @@ namespace TGAN_Svc.Models
                 new ObjectParameter("UserGroupId", typeof(System.Guid));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AnalyticsUnechte_Result>("AnalyticsUnechte", userGroupIdParameter);
+        }
+    
+        public virtual ObjectResult<AnalyticsResultHistory_Result> AnalyticsResultHistory(Nullable<System.Guid> teamHome, Nullable<System.Guid> teamAway)
+        {
+            var teamHomeParameter = teamHome.HasValue ?
+                new ObjectParameter("teamHome", teamHome) :
+                new ObjectParameter("teamHome", typeof(System.Guid));
+    
+            var teamAwayParameter = teamAway.HasValue ?
+                new ObjectParameter("teamAway", teamAway) :
+                new ObjectParameter("teamAway", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AnalyticsResultHistory_Result>("AnalyticsResultHistory", teamHomeParameter, teamAwayParameter);
+        }
+    
+        public virtual ObjectResult<GetGamesWithTeamName_Result> GetGamesWithTeamName(Nullable<System.Guid> roundId)
+        {
+            var roundIdParameter = roundId.HasValue ?
+                new ObjectParameter("roundId", roundId) :
+                new ObjectParameter("roundId", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetGamesWithTeamName_Result>("GetGamesWithTeamName", roundIdParameter);
         }
     }
 }

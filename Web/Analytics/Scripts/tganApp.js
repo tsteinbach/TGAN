@@ -18,6 +18,12 @@ var tgan = angular.module("tganStatistics", ['ngRoute']);
 				templateUrl : 'tganPages/tendency.html',
 				controller  : 'tganTendencyController'
 			})
+
+            // route for the result history page
+			.when('/resultHistory', {
+			    templateUrl: 'tganPages/resultHistory.html',
+			    controller: 'tganResultHistoryController'
+			})
 			
 			// route for the unechte Bank page
 			.when('/unechteBank', {

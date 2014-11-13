@@ -9,11 +9,27 @@ Warnung 6002: Für Tabelle/Sicht 'Fussballtipp-tgan.dbo.UserGroup' ist kein Prim
     <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="150" />
   </EntityType>
+  <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'Fussballtipp-tgan.dbo.RoundsOfActualSeason' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+  <EntityType Name="RoundsOfActualSeason">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="SeasonID" />
+      <PropertyRef Name="Spieltag" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SeasonID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Spieltag" Type="int" Nullable="false" />
+  </EntityType>
   <Function Name="AnalyticsEchte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="UserGroupId" Type="uniqueidentifier" Mode="In" />
   </Function>
   <Function Name="AnalyticsNeuner" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="UserGroupId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+  <Function Name="AnalyticsResultHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="teamHome" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="teamAway" Type="uniqueidentifier" Mode="In" />
   </Function>
   <Function Name="AnalyticsTendency" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="UserGroupId" Type="uniqueidentifier" Mode="In" />
@@ -21,12 +37,22 @@ Warnung 6002: Für Tabelle/Sicht 'Fussballtipp-tgan.dbo.UserGroup' ist kein Prim
   <Function Name="AnalyticsUnechte" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="UserGroupId" Type="uniqueidentifier" Mode="In" />
   </Function>
+  <Function Name="GetGamesWithTeamName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="roundId" Type="uniqueidentifier" Mode="In" />
+  </Function>
   <EntityContainer Name="AnalyticsModelStoreContainer">
     <EntitySet Name="UserGroup" EntityType="Self.UserGroup" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
 [UserGroup].[ID] AS [ID], 
 [UserGroup].[Name] AS [Name]
 FROM [dbo].[UserGroup] AS [UserGroup]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="RoundsOfActualSeason" EntityType="Self.RoundsOfActualSeason" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[RoundsOfActualSeason].[ID] AS [ID], 
+[RoundsOfActualSeason].[SeasonID] AS [SeasonID], 
+[RoundsOfActualSeason].[Spieltag] AS [Spieltag]
+FROM [dbo].[RoundsOfActualSeason] AS [RoundsOfActualSeason]</DefiningQuery>
     </EntitySet>
   </EntityContainer>
 </Schema>

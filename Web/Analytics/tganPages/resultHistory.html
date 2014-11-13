@@ -1,0 +1,45 @@
+<div class="container">
+
+	<h3>Bilanz der Spiele des ausgewählten Spieltags</h3>
+
+	<my-close></my-close>
+
+	<div class="row">
+		<div class="col-sm-3 col-md-6 col-lg-4">
+            <my-round></my-round>
+     	</div>
+		<div class="col-sm-9 col-md-6 col-lg-8">
+			<div class="table-responsive">
+				<table class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th>Team 1</th>
+							<th>Team 2</th>
+							<th>Bilanz</th>
+                            <th>Details</th>
+
+						</tr>
+					</thead>
+					 
+					<tbody>
+						<tr ng-repeat="x in games">
+							<td>{{ x.Team1 }}</td> 
+                            <td>{{ x.Team2 }}</td> 
+                            <td>
+                                Siege Team1: {{ x.Team1Win }} <br/>  
+                                Siege Team2: {{ x.Team2Win }} <br /> 
+                                Unentschieden: {{ x.Draw }}
+                            </td> 
+                            <td>
+                                <div ng-repeat="season in x.Details | orderBy:'Season':true">
+                                    {{ season.Season }}: Hin - {{season.ResultFirstHalfSeason}} | Rück - {{season.ResultSecondHalfSeason}}
+                                </div>
+                            </td> 
+                       </tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</div>
