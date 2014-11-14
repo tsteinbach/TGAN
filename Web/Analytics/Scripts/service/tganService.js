@@ -20,6 +20,12 @@
 	        });
 	    };
 
+	    this.getGameHistoryResultDetails = function (team1, team2) {
+	        return $http.get(this.buildSvcUrlWithTwoParameters(team1, team2, "RoundResult", "GetDetail")).then(function (response) {
+	            return response.data;
+	        });
+	    };
+
 	    this.getTendenzData = function (groupId) {
 	        return $http.get(this.buildSvcUrl(groupId,"tendency")).then(function (response) {
 				return response.data;
@@ -45,20 +51,25 @@
 		};
 
 		this.getUserGroups = function () {
-		    return $http.get(this.serviceApiUrl + "/group").then(function (response) {
+		    return $http.get(this.serviceApiUrl + "/group/Get").then(function (response) {
 		        return response.data;
 		    });
 		};
 
 		this.getRoundsOfActualSeason = function () {
-		    return $http.get(this.serviceApiUrl + "/round").then(function (response) {
+		    return $http.get(this.serviceApiUrl + "/round/Get").then(function (response) {
 		        return response.data;
 		    });
 		};
 
-		this.buildSvcUrl = function(parameter, methode){
+		this.buildSvcUrl = function(parameter, controller){
 
-		    return this.serviceApiUrl + "/" + methode + "/" + parameter;
+		    return this.serviceApiUrl + "/" + controller + "/Get/" + parameter;
+		}
+
+		this.buildSvcUrlWithTwoParameters = function (parameter1, parameter2, controller ,methode) {
+
+		    return this.serviceApiUrl + "/" + controller + "/"+ methode +"/" + parameter1 +"/" + parameter2;
 		}
 	}
 

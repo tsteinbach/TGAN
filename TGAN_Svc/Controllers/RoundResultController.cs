@@ -16,7 +16,39 @@ namespace TGAN_Svc.Controllers
     public class RoundResultController : ApiController
     {
 
-        // GET api/RoundResult/EFD495F8-DAF3-4FD0-AFAF-3E278327EAD2
+        // GET api/RoundResult/GetDetail/{id}/{id2}
+        public IEnumerable<AnalyticsResultHistoryDetailDTO> GetDetail(string id, string id2)
+        {
+            var teamHome = new Guid(id);
+            var teamAway = new Guid(id2);
+
+            List<AnalyticsResultHistoryDetailDTO> result = new List<AnalyticsResultHistoryDetailDTO>();
+
+            using (var analytics = new Models.TGANAnalyticsEntities())
+            {
+                // Alle Hinspiele
+                var history = analytics.AnalyticsResultHistory(teamHome, teamAway).ToList();
+
+                result = history.Select(x => new AnalyticsResultHistoryDetailDTO
+                {
+                    Season = x.Season,
+                    ResultFirstHalfSeason = FormatGameResult(x.result)
+                }).ToList();
+
+                //Alle Rückspiele
+                var historyViseVersa = analytics.AnalyticsResultHistory(teamAway, teamHome).ToList();
+
+                foreach (var item in result)
+                {
+                    var seasonItem = historyViseVersa.SingleOrDefault(x => x.Season == item.Season);
+                    item.ResultSecondHalfSeason = seasonItem == null ? "" : FormatGameResult(seasonItem.result);
+                }
+            }
+
+            return result;
+        }
+
+        // GET api/RoundResult/Get/EFD495F8-DAF3-4FD0-AFAF-3E278327EAD2
         public IEnumerable<AnalyticsResultHistoryDTO> Get(string id)
         {
             Guid roundId;
@@ -35,16 +67,13 @@ namespace TGAN_Svc.Controllers
 
                     AnalyticsResultHistoryDTO historyResult = new AnalyticsResultHistoryDTO
                     {
+                        Team1ID = game.TeamID_home.HasValue ? game.TeamID_home.Value : Guid.Empty,
+                        Team2ID = game.TeamID_away.HasValue ? game.TeamID_away.Value : Guid.Empty ,
                         Team1 = game.HomeTeam,
                         Team2 = game.AwayTeam,
                         Draw = history.Count(x => TippBL.DetermineResultOfGame(x.result) == TippValue.Draw),
                         Team1Win = history.Count(x => TippBL.DetermineResultOfGame(x.result) == TippValue.Home),
                         Team2Win = history.Count(x => TippBL.DetermineResultOfGame(x.result) == TippValue.Away),
-                        Details = history.Select(x => new AnalyticsResultHistoryDetailDTO
-                        {
-                            Season = x.Season,
-                            ResultFirstHalfSeason = FormatGameResult(x.result)
-                        }).ToList()
                     };
 
                     //Alle Rückspiele
@@ -53,12 +82,6 @@ namespace TGAN_Svc.Controllers
                     historyResult.Draw += historyViseVersa.Count(x => TippBL.DetermineResultOfGame(x.result) == TippValue.Draw);
                     historyResult.Team2Win += historyViseVersa.Count(x => TippBL.DetermineResultOfGame(x.result) == TippValue.Home);
                     historyResult.Team1Win += historyViseVersa.Count(x => TippBL.DetermineResultOfGame(x.result) == TippValue.Away);
-
-                    foreach (var item in historyResult.Details)
-                    {
-                        var seasonItem = historyViseVersa.SingleOrDefault(x => x.Season == item.Season);
-                        item.ResultSecondHalfSeason = seasonItem == null ? "" : FormatGameResult(seasonItem.result);
-                    }
 
                     result.Add(historyResult);
                 }

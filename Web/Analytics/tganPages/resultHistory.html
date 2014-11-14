@@ -16,24 +16,22 @@
 							<th>Team 1</th>
 							<th>Team 2</th>
 							<th>Bilanz</th>
-                            <th>Details</th>
+                            <th>Bilanzdetails</th>
 
 						</tr>
 					</thead>
 					 
 					<tbody>
-						<tr ng-repeat="x in games">
-							<td>{{ x.Team1 }}</td> 
-                            <td>{{ x.Team2 }}</td> 
+						<tr ng-repeat="game in games">
+							<td>{{ game.Team1 }}</td> 
+                            <td>{{ game.Team2 }}</td> 
                             <td>
-                                Siege Team1: {{ x.Team1Win }} <br/>  
-                                Siege Team2: {{ x.Team2Win }} <br /> 
-                                Unentschieden: {{ x.Draw }}
+                                Siege Team1: {{ game.Team1Win }} <br/>  
+                                Siege Team2: {{ game.Team2Win }} <br /> 
+                                Unentschieden: {{ game.Draw }}
                             </td> 
                             <td>
-                                <div ng-repeat="season in x.Details | orderBy:'Season':true">
-                                    {{ season.Season }}: Hin - {{season.ResultFirstHalfSeason}} | Rück - {{season.ResultSecondHalfSeason}}
-                                </div>
+                                <my-roundhistdetail></my-roundhistdetail>
                             </td> 
                        </tr>
 					</tbody>

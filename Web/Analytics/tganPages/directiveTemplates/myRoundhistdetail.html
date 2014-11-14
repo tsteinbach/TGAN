@@ -1,0 +1,10 @@
+<header>
+        <div class="col-sm-10">
+            <button class="btn btn-info" ng-show="showButton" type="button" ng-click="loadGameHistoryDetails(game)">Details laden ...</button>
+        </div>
+        <div ng-repeat="season in gamesDetails | orderBy:'Season':true">
+            {{ season.Season }}: Hin - {{season.ResultFirstHalfSeason}} | Rueck - {{season.ResultSecondHalfSeason}}
+        </div>
+
+</header>
+
