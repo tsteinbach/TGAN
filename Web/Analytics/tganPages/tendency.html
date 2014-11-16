@@ -34,22 +34,67 @@
 				<table class="table table-striped table-bordered">
 					<thead>
 						<tr>
-							<th>Season</th>
-							<th>User</th>
-							<th>Tendenz</th>
-							<th>Count</th>
+                            <th>Tendenz</th>
+                            <th>Anzahl</th>
+                            <th>Details</th>
 						</tr>
 					</thead>
 					 
-					<tbody>
-						<tr ng-repeat="x in names | filter:User | filter:Season | filter:Tipp | orderBy:'Tipp'">
-							    <td>{{ x.Season }}</td>
-							    <td>{{ x.User }}</td>
-							<td>{{ x.Tipp }}</td>
-							    <td>{{ x.Count }}</td>
-							 
-						</tr>
-					</tbody>
+                    <tbody ng-repeat="tendency in tganData | filter:User | filter:Season | filter:Tipp | orderBy:'Tipp'">
+                        <tr>
+                            <td>{{ tendency.Tipp }}</td>
+                            <td>{{ tendency.Count }}</td>
+                            <td><button class="btn btn-info" type="button" ng-click="selectTableRow($index, tendency.Tipp)">Details auf Ebene Saison</button></td>
+                        </tr>
+                        <tr ng-show="!seasonDataCollapse[$index]">
+                            <td colspan="3">
+                                <div>
+                                    <table class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Tendenz</th>
+                                                <th>Saison</th>
+                                                <th>Anzahl</th>
+                                                <th>Details</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody ng-repeat="season in tendency.SeasonGroup | filter:User | filter:Season | filter:Tipp | orderBy:'Season':true">
+                                            <tr>
+                                                <td>{{ season.Tipp }}</td>
+                                                <td>{{ season.Season }}</td>
+                                                <td>{{ season.Count }}</td>
+                                                <td><button class="btn btn-info" type="button" ng-click="">Details auf Ebene Benutzer</button></td>
+                                            </tr>
+                                            <tr>
+                            <td colspan="4">
+                                <div>
+                                    <table class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Tendenz</th>
+                                                <th>Saison</th>
+                                                <th>Benutzer</th>
+                                                <th>Anzahl</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody ng-repeat="user in season.UserGroup | filter:User | filter:Season | filter:Tipp | orderBy:'User'">
+                                            <tr>
+                                                <td>{{ user.Tipp }}</td>
+                                                <td>{{ user.Season }}</td>
+                                                <td>{{ user.User }}</td>
+                                                <td>{{ user.Count }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
 				</table>
 			</div>
 		</div>

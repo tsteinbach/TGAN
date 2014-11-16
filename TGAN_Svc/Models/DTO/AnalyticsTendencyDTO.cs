@@ -11,5 +11,7 @@ namespace TGAN_Svc.Models.DTO
         public string Season { get; set; }
         public string Tipp { get; set; }
         public int Count { get; set; }
+        public List<AnalyticsTendencyDTO> SeasonGroup { get; set; }
+        public List<AnalyticsTendencyDTO> UserGroup { get; set; }
     }
 }
