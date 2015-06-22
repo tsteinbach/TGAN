@@ -54,7 +54,7 @@
                         <li><a class="menue" href="Docs/TSATZ.pdf">Satzung</a></li>
                         <li><a class="menue" href="Impressum.aspx">Impressum</a></li>
                         <li><a class="menue" href="HallOfFame.aspx">Siegerliste</a></li>
-                        <li><a class="menue" href="VerseOfBible.aspx">Bibelvers</a></li>
+                        <%--<li><a class="menue" href="VerseOfBible.aspx">Bibelvers</a></li>--%>
                     </ul>
                     <asp:Label CssClass="headline" ID="MenuAdministration" Text="Administration" runat="server"></asp:Label>
                     <ul>

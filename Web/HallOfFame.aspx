@@ -88,6 +88,11 @@
                             <td>Christoph</td>
                             <td>13/14</td>
                         </tr>
+                        <tr>
+                            <td><img src="images/weltmeisterpokal.gif" alt=""  /></td>
+                            <td>Manja</td>
+                            <td>14/15</td>
+                        </tr>
                     </table>
                 </div>
 </asp:Content>
