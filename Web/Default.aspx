@@ -18,6 +18,9 @@
                             <td>
                                 <asp:Button CssClass="loginCmd" ID="group2" runat="server" onclick="cmdLoginGroup2_Click"/>
                             </td>
+                            <td>
+                                <asp:Button CssClass="loginCmd" ID="group3" runat="server" onclick="cmdLoginGroup3_Click"/>
+                            </td>
                         </tr>
                     </table>
                     <div class="lh4"><br /></div>

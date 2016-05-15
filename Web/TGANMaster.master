@@ -26,11 +26,11 @@
             <div id="navigation">
                 
                 <div id="logo">
-                    <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="240" height="80">
+                    <%--<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="240" height="80">
                     <param name="movie" value="flash/logoAnimate.swf">
                     <param name="wmode" value="transparent">
                     <embed src="flash/logoAnimate.swf" quality="high" width="240" height="80" name="show" align="middle" FlashVars="width=240&height=80" allowScriptAccess="sameDomain" allowFullScreen="true" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
-                    </object>
+                    </object>--%>
                 </div>
                 <div class="actUserList">
                     <div><%Response.Write("Aktuelle Serverzeit: " + DateTime.Now.ToShortTimeString());%></div>
@@ -45,7 +45,7 @@
                         <li><a class="menue" id="lnkHome" href="Default.aspx">Startseite</a><br /></li>
                         <li><a class="menue" id="lnkTippMng" href="Tipp-Manager.aspx">Tipps eintragen</a><br /></li>
                         <li><a class="menue" id="lnkGesamtstand" href="Gesamtstand.aspx">Tippübersicht</a><br /></li>
-                        <li><a class="menue" id="lnkAnalytics" href="Analytics/TganStatistics.html">Analytics</a><br /></li>
+                        <%--<li><a class="menue" id="lnkAnalytics" href="Analytics/TganStatistics.html">Analytics</a><br /></li>--%>
                         <li><a class="menue" id="lnkMemberInf" href="Member-Information.aspx">Mitgliederinfos</a><br /></li>
                         <li><a class="menue" id="lnkForum" href="Forum_TGAN.aspx">Forum</a></li>
                     </ul>

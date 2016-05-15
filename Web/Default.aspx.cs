@@ -43,11 +43,13 @@ public partial class _Default : MemberInfomationBasePage
         {
             List<string> groups = new MemberBL(TGANConfiguration.DBACCESS).GetAllNamesOfUserGroups();
 
-            if (groups.Count != 2)
-                throw new Exception("Amount of groups is not equal to 2!");
+            if (groups.Count != 3)
+                throw new Exception("Amount of groups is not equal to 3!");
+
 
             group1.Text = groups[0];
             group2.Text = groups[1];
+            group3.Text = groups[2];
 
             try
             {
@@ -70,6 +72,13 @@ public partial class _Default : MemberInfomationBasePage
     }
 
     protected void cmdLoginGroup2_Click(object sender, EventArgs e)
+    {
+        if (sender.GetType() != typeof(Button))
+            throw new Exception("sender is not a Button");
+        login(((Button)sender).Text);
+    }
+
+    protected void cmdLoginGroup3_Click(object sender, EventArgs e)
     {
         if (sender.GetType() != typeof(Button))
             throw new Exception("sender is not a Button");
@@ -241,4 +250,6 @@ public partial class _Default : MemberInfomationBasePage
         RoundBL roundB = new RoundBL(actualSeason, TGANConfiguration.DBACCESS);
         roundB.UpdateCheckableRounds();
     }
+
+    
 }
