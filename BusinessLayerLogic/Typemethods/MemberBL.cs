@@ -5,6 +5,7 @@ using DataLayerLogic;
 using DataLayerLogic.Types;
 using System.Web.Security;
 using System.Diagnostics;
+using System.Linq;
 
 namespace BusinessLayerLogic.Typemethods
 {
@@ -116,7 +117,7 @@ namespace BusinessLayerLogic.Typemethods
                 
                 if (m != null)
                 {
-                    if (m.Password == FormsAuthentication.HashPasswordForStoringInConfigFile(pw, "SHA1"))
+                    if (IsUserActive(m) && (m.Password == FormsAuthentication.HashPasswordForStoringInConfigFile(pw, "SHA1")))
                         return true;
                     else
                         return false;
@@ -128,6 +129,18 @@ namespace BusinessLayerLogic.Typemethods
             {
                 throw ex;
             }
+        }
+
+        private bool IsUserActive(Member m)
+        {
+            var season = new SeasonBL(_dbAccess).GetActualSeason();
+            List<Member>  users = new List<Member>() { m };
+            validateUserAppearence(season, ref users);
+
+            if (users.SingleOrDefault(x => x.Show && x.UserName == m.UserName) == null)
+                return false;
+            else
+                return true;
         }
 
         private string _UserNameToFind = null;
