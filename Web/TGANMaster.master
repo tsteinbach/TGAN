@@ -6,75 +6,63 @@
 <head runat="server">
 
 <title>TGAN-Master</title>
-<link href="main.css" rel="Stylesheet" type="text/css" />
+<%--<link href="main.css" rel="Stylesheet" type="text/css" />--%>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
      
 </head>
+
 <body>
     <form id="MasterForm" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true" EnablePageMethods="true" />
          <div id = "container">
-           <div id = "header">
-                <%--<asp:UpdatePanel ID="updateHeader" runat="server" UpdateMode="Always">
-                    <ContentTemplate>--%>
-                        <h4><asp:Label ID="lblLogininfo" runat="server"></asp:Label></h4> 
-                        <div class="lh4"><br /></div>
-                         
-                        <div class="lh4"><br /></div>
-                    <%--</ContentTemplate>
-                </asp:UpdatePanel>--%>
+           <div id = "header" class="w3-container w3-blue">
+               <div class="w3-row-padding">
+                   <div class ="w3-half">
+                        <div class="w3-container w3-section">   
+                            <ul class="w3-navbar w3-blue">
+                                <li><a class="w3-hover-none w3-text-black w3-hover-text-white"  href="Default.aspx">Startseite</a></li>
+                                <li><a class="w3-hover-none w3-text-black w3-hover-text-white" href="Tipp-Manager.aspx">Tipps eintragen</a></li>
+                                <li><a class="w3-hover-none w3-text-black w3-hover-text-white" href="Gesamtstand.aspx">Tippübersicht</a></li>
+                                <li><a class="w3-hover-none w3-text-black w3-hover-text-white" href="Member-Information.aspx">Mitgliederinfos</a></li>
+                                 <li><a class="w3-hover-none w3-text-black w3-hover-text-white" href="Forum_TGAN.aspx">Forum</a></li>
+                                <li><asp:LinkButton ID="cmdLogOut" CssClass="w3-hover-none w3-text-black w3-hover-text-white" runat="server" Text="Abmelden" OnClick="cmdLogOut_Click"></asp:LinkButton></li>
+                            </ul> 
+                        </div>
+                   </div>
+                   <div class ="w3-half">
+                        <div class="w3-container w3-section">
+                           <asp:Label ID="lblLogininfo" runat="server"></asp:Label>
+                   
+                           <div class="w3-card-12" style="width:50%"> 
+                        
+                               <asp:Label ID="litActUserList" runat="server"/>
+                        
+                            </div>
+                        </div>
+                    </div>
+                </div>
            </div>
-            <div id="navigation">
-                
-                <div id="logo">
-                    <%--<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="240" height="80">
-                    <param name="movie" value="flash/logoAnimate.swf">
-                    <param name="wmode" value="transparent">
-                    <embed src="flash/logoAnimate.swf" quality="high" width="240" height="80" name="show" align="middle" FlashVars="width=240&height=80" allowScriptAccess="sameDomain" allowFullScreen="true" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
-                    </object>--%>
-                </div>
-                <div class="actUserList">
-                    <div><%Response.Write("Aktuelle Serverzeit: " + DateTime.Now.ToShortTimeString());%></div>
-                    <asp:Label CssClass="headline" ID="lblActUsersHead" Text="Aktuell angemeldete Mitglieder:" runat="server"></asp:Label>
-                    <asp:Label ID="litActUserList" runat="server">
-                     </asp:Label>
-
-                </div>
-                <div class="menueItems">
-                    <asp:Label CssClass="headline" ID="MenuAllgemein" Text="Anwendungen" runat="server"></asp:Label>
-                    <ul >
-                        <li><a class="menue" id="lnkHome" href="Default.aspx">Startseite</a><br /></li>
-                        <li><a class="menue" id="lnkTippMng" href="Tipp-Manager.aspx">Tipps eintragen</a><br /></li>
-                        <li><a class="menue" id="lnkGesamtstand" href="Gesamtstand.aspx">Tippübersicht</a><br /></li>
-                        <%--<li><a class="menue" id="lnkAnalytics" href="Analytics/TganStatistics.html">Analytics</a><br /></li>--%>
-                        <li><a class="menue" id="lnkMemberInf" href="Member-Information.aspx">Mitgliederinfos</a><br /></li>
-                        <li><a class="menue" id="lnkForum" href="Forum_TGAN.aspx">Forum</a></li>
-                    </ul>
-                    <asp:Label CssClass="headline" ID="Label1" Text="Sonstiges" runat="server"></asp:Label>
-                    <ul >
-                        <li><a class="menue" href="Docs/TSATZ.pdf">Satzung</a></li>
-                        <li><a class="menue" href="Impressum.aspx">Impressum</a></li>
-                        <li><a class="menue" href="HallOfFame.aspx">Siegerliste</a></li>
-                        <%--<li><a class="menue" href="VerseOfBible.aspx">Bibelvers</a></li>--%>
-                    </ul>
-                    <asp:Label CssClass="headline" ID="MenuAdministration" Text="Administration" runat="server"></asp:Label>
-                    <ul>
-                        <li><a class="menue" id="lnkMemberAdmin" href="MemberAdmin.aspx">Neue Mitglieder</a><br /></li>
-                        <li><a class="menue" id="lnkTippAdmin" href="TippAdmin.aspx">Tipps nachtragen</a></li>
-                        <li><a class="menue" id="lnkExcelExport" href="exportToExcel.aspx">Excel-Export</a></li>
-                    </ul>
-                    <p><asp:LinkButton ID="cmdLogOut" CssClass="logOut" runat="server" Text="abmelden" OnClick="cmdLogOut_Click"></asp:LinkButton></p>
-                </div>
-                <span class="lh4"><br /></span>
-            </div>
-           <div id="content">             
+           <div id="content" class="w3-container">             
                 <asp:ContentPlaceHolder ID="mainContent" runat="server" />
                 <span class="lh4"><br /></span>
            </div>
            <%--<div id="right">
                 
            </div>--%>
-            <div id="footer" runat="server">
-               
+            <div id="footer" runat="server" class="w3-container w3-blue">
+                <div class="w3-row-padding">
+                    <div class="w3-half">
+                        <ul class="w3-navbar w3-blue">
+                           <li><a class="w3-hover-none w3-text-black w3-hover-text-white" href="Docs/TSATZ.pdf">Satzung</a></li>
+                           <li><a class="w3-hover-none w3-text-black w3-hover-text-white" href="Impressum.aspx">Impressum</a></li>
+                           <li><a class="w3-hover-none w3-text-black w3-hover-text-white" href="HallOfFame.aspx">Siegerliste</a></li>
+                       </ul>
+                    </div>
+                    <div class="w3-half w3-right-align">
+                        <%Response.Write("Aktuelle Serverzeit: " + DateTime.Now.ToShortTimeString());%>
+                    </div>
+                </div>
             </div>
        </div>
     </form>
