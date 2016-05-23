@@ -18,11 +18,10 @@ using System.Collections.Generic;
 
 public partial class _Default : MemberInfomationBasePage
 {
-    private const string _UserCountText = "Besuche registrierter Benutzer:";
-
+    private const string _UserCountText = "";
     private void reloadUserCount()
     {
-        lbluserCount.Text = String.Format("{0} {1}", _UserCountText, TGANConfiguration.DBACCESS.CountVisitors().ToString());
+        lbluserCount.Text = String.Format("{0}", TGANConfiguration.DBACCESS.CountVisitors().ToString());
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -104,7 +103,7 @@ public partial class _Default : MemberInfomationBasePage
 
             try
             {
-                TGANConfiguration.DBACCESS.UpdateVisitors(Int32.Parse(TGANConfiguration.DBACCESS.CountVisitors().ToString().Replace(_UserCountText, "").Trim()));
+                TGANConfiguration.DBACCESS.UpdateVisitors(Int32.Parse(TGANConfiguration.DBACCESS.CountVisitors().ToString().Trim()));
                 reloadUserCount();
             }
             catch (Exception ex)
