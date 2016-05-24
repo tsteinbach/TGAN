@@ -2,46 +2,85 @@
 <%@ Register Assembly="System.Web.Extensions, Version=1.0.61025.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI" TagPrefix="asp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="mainContent" Runat="Server">
-<%--<asp:UpdatePanel runat="server" ID="updateMember">
-<ContentTemplate>--%>
-<DIV ID="MemberInfoOverview"><TABLE><TBODY><TR><TD>Benutzerinformationen:</TD><TD><asp:DropDownList id="lstUsers" runat="server" OnSelectedIndexChanged="lstUsers_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList></TD></TR><TR><TD>Benutzername:</TD><TD><asp:Label id="lblUserName" runat="server"></asp:Label></TD></TR><TR><TD>Benutzergruppe:</TD><TD><asp:Label id="lblUserGroup" runat="server"></asp:Label></TD></TR><TR><TD>Vorname:</TD><TD><asp:TextBox id="txtFirstName" runat="server"></asp:TextBox></TD></TR><TR><TD>Nachname:</TD><TD><asp:TextBox id="txtLastName" runat="server"></asp:TextBox></TD></TR><TR><TD>Adresse:</TD><TD><asp:TextBox id="txtAdresse" runat="server"></asp:TextBox></TD></TR><TR><TD>PLZ:</TD><TD><asp:TextBox id="txtPlz" runat="server"></asp:TextBox></TD></TR><TR><TD>Ort:</TD><TD><asp:TextBox id="txtOrt" runat="server"></asp:TextBox></TD></TR><TR><TD>Titel:</TD><TD><asp:Label id="lblTitle" runat="server"></asp:Label></TD></TR><TR><TD>EMail:</TD><TD><asp:TextBox id="txtEMail" runat="server"></asp:TextBox></TD></TR><TR><TD>Telefon:</TD><TD><asp:TextBox id="txtPhone" runat="server"></asp:TextBox></TD></TR><TR><TD>Passwort:</TD><TD><asp:TextBox id="txtPassword" runat="server" TextMode="Password"></asp:TextBox></TD></TR>
-<TR><TD>Geburtstag:</TD><TD><asp:TextBox id="txtGeburtstag" runat="server"></asp:TextBox></TD></TR>
-<TR><TD>Dabei seit:</TD><TD><asp:DropDownList id="dropMemberSince" runat="server" 
-    Enabled="False"></asp:DropDownList></TD></TR>
-<TR><TD>Dabei bis:</TD><TD><asp:DropDownList id="dropMemberTo" runat="server" 
-    Enabled="False"></asp:DropDownList></TD></TR>
-<TR><TD colSpan=2><asp:CheckBox id="isAdministrator" runat="server" Text="Administrator?" Enabled="false"></asp:CheckBox></TD></TR><TR><TD colSpan=2><asp:Button id="cmdChangeUserInfo" onclick="cmdChangeUserInfo_Click" runat="server" Text="Änderungen bestätigen"></asp:Button></TD></TR></TBODY></TABLE>
-<br />
-<asp:Panel id="panelChangePW" runat="server" GroupingText="Passwort abändern?">
-    <p>Neues Passwort: <asp:TextBox id="txtNewPW" runat="server"></asp:TextBox></p>
-    <br />
-    <p><asp:Button id="cmdChangePW" onclick="cmdChangePW_Click" runat="server" Text="Passwort ändern"></asp:Button></p>
-</asp:Panel> </DIV>
-<%--</ContentTemplate>
-</asp:UpdatePanel>--%>
-     <%-- <act:UpdatePanelAnimationExtender ID="animateMember" runat="server" BehaviorID="animatenOfMember" TargetControlID="updateMember">
-                <Animations>
-                 <OnUpdating>
-                    <Sequence>
-                        <Parallel duration="0">
-                            <EnableAction AnimationTarget="cmdChangePW" Enabled="false"/>
-                        </Parallel>
-                        <Parallel duration=".25" Fps="30">
-                            <FadeOut AnimationTarget="up_container" minimumOpacity=".2"/>
-                        </Parallel>
-                    </Sequence>
-                 </OnUpdating>
-                 <OnUpdated>
-                    <Sequence>
-                        <Parallel duration=".25" Fps="30">
-                            <FadeIn AnimationTarget="up_container" minimumOpacity=".2"/>
-                        </Parallel>
-                        <Parallel duration="0">
-                            <EnableAction AnimationTarget="cmdChangePW" Enabled="true"/>
-                        </Parallel>
-                    </Sequence>
-                 </OnUpdated>
-                 </Animations>
-      </act:UpdatePanelAnimationExtender>--%>
+    <div class="w3-container w3-border w3-padding-16" id="MemberInfoOverview">
+        <div class="w3-section">
+            <label><b>Benutzerinformationen von:</b></label>
+            <p><asp:DropDownList id="lstUsers" runat="server" OnSelectedIndexChanged="lstUsers_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList></p>
+
+            <label><b>Benutzername</b></label>
+            <asp:TextBox id="lblUserName" CssClass="w3-input w3-border w3-margin-bottom" Enabled ="false" runat="server"></asp:TextBox>
+             
+            <label><b>Benutzergruppe</b></label>
+            <asp:TextBox id="lblUserGroup" CssClass="w3-input w3-border w3-margin-bottom" Enabled ="false" runat="server"></asp:TextBox>
+             
+            <label><b>Vorname</b></label>
+            <asp:TextBox id="txtFirstName" CssClass="w3-input w3-border w3-margin-bottom" runat="server"></asp:TextBox>
+
+            <label><b>Nachname</b></label>
+            <asp:TextBox id="txtLastName" CssClass="w3-input w3-border w3-margin-bottom" runat="server"></asp:TextBox>
+
+            <label><b>Adresse</b></label>
+            <asp:TextBox id="txtAdresse" CssClass="w3-input w3-border w3-margin-bottom" runat="server"></asp:TextBox>
+
+            <label><b>PLZ</b></label>
+            <asp:TextBox id="txtPlz" CssClass="w3-input w3-border w3-margin-bottom" runat="server"></asp:TextBox>
+
+            <label><b>Ort</b></label>
+            <asp:TextBox id="txtOrt" CssClass="w3-input w3-border w3-margin-bottom" runat="server"></asp:TextBox>
+
+            <label><b>Titel</b></label>
+            <asp:Label id="lblTitle" CssClass="w3-input w3-border w3-margin-bottom" runat="server"></asp:Label>
+
+            <label><b>E-Mail</b></label>
+            <asp:TextBox id="txtEMail" CssClass="w3-input w3-border w3-margin-bottom" runat="server"></asp:TextBox>
+
+            <label><b>Telefon</b></label>
+            <asp:TextBox id="txtPhone" CssClass="w3-input w3-border w3-margin-bottom" runat="server"></asp:TextBox>
+
+            <label><b>Passwort</b></label>
+            <asp:TextBox id="txtPassword" CssClass="w3-input w3-border w3-margin-bottom" runat="server" TextMode="Password"></asp:TextBox>
+
+            <label><b>Geburtstag</b></label>
+            <asp:TextBox id="txtGeburtstag" CssClass="w3-input w3-border w3-margin-bottom" runat="server"></asp:TextBox>
+
+            <div class="w3-section" style="width:15%">
+                <label>
+                <b>Dabei seit:</b>
+               </label>
+                <span class="w3-right">
+                    <asp:DropDownList id="dropMemberSince" CssClass="w3-border w3-margin-bottom" runat="server" Enabled="False">
+                    </asp:DropDownList>
+                </span>
+            </div>
+
+            <div class="w3-section" style="width:15%">
+                <label>
+                <b>Dabei bis:</b>
+               </label>
+                <span class="w3-right">
+                    <asp:DropDownList id="dropMemberTo" CssClass="w3-border w3-margin-bottom" runat="server" Enabled="False">
+                    </asp:DropDownList>
+                </span>
+            </div>
+
+            <div class="w3-section" style="width:15%">
+                <label>
+                <b>Ist Administrator:</b>
+               </label>
+                <span class="w3-right">
+                    <asp:CheckBox id="isAdministrator" CssClass="w3-check w3-margin-bottom" runat="server" Enabled="false"></asp:CheckBox>
+                </span>
+            </div>
+            
+            <asp:Button id="cmdChangeUserInfo" CssClass="w3-btn w3-round-large w3-orange w3-small" onclick="cmdChangeUserInfo_Click" runat="server" Text="Änderungen bestätigen"></asp:Button>
+
+            <asp:Panel id="panelChangePW" runat="server" GroupingText="Passwort abändern?">
+                <label><b>Neues Passwort</b></label> 
+                <asp:TextBox id="txtNewPW" CssClass="w3-input w3-border w3-margin-bottom" runat="server"></asp:TextBox>
+                <asp:Button id="cmdChangePW" CssClass="w3-btn  w3-round-large w3-orange w3-small" onclick="cmdChangePW_Click" runat="server" Text="Passwort ändern"></asp:Button>
+            </asp:Panel> 
+
+        </div>    
+    </div>
 </asp:Content>
 
