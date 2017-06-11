@@ -7,6 +7,11 @@
         <ul class="w3-ul w3-tiny">
             <li class="w3-padding-16">
                 <img src="images/weltmeisterpokal.gif" class="w3-left w3-circle" style="width:20px"/>
+                <span class="w3-large">Ruben / Domo</span><br>
+                <span>16/17</span>
+            </li>
+            <li class="w3-padding-16">
+                <img src="images/weltmeisterpokal.gif" class="w3-left w3-circle" style="width:20px"/>
                 <span class="w3-large">Carsten</span><br>
                 <span>15/16</span>
             </li>
@@ -109,6 +114,7 @@
                 <li>Peggy <span class="w3-badge w3-green w3-right">1</span></li>
                  <li>Manja <span class="w3-badge w3-green w3-right">1</span></li>
                 <li>Annegret DD <span class="w3-badge w3-green w3-right">1</span></li>
+                <li>Ruben / Domo <span class="w3-badge w3-green w3-right">1</span></li>
             </ul>
         </div>
      </div>                  
