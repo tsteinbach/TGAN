@@ -102,6 +102,8 @@
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web">
       <Name>System.Web</Name>
     </Reference>
@@ -127,31 +129,15 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Service References\openligadbWCF\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Typemethods\MemberBL.cs" />
     <Compile Include="Typemethods\RoundBL.cs" />
     <Compile Include="Typemethods\SeasonBL.cs" />
     <Compile Include="Typemethods\TippBL.cs" />
-    <Compile Include="Web References\openligadb\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferences Include="Web References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferenceUrl Include="http://www.openligadb.de/Webservices/Sportsdata.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\openligadb\</RelPath>
-      <UpdateFromURL>http://www.openligadb.de/Webservices/Sportsdata.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>BusinessLayerLogic_openligadb_Sportsdata</CachedSettingsPropName>
-    </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -159,30 +145,31 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Web References\openligadb\Fussballdaten.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\openligadbWCF\BusinessLayerLogic.openligadbWCF.Fussballdaten.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\openligadb\Group.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\openligadbWCF\BusinessLayerLogic.openligadbWCF.Goal.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\openligadb\League.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\openligadbWCF\BusinessLayerLogic.openligadbWCF.GoalGetter.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\openligadb\Matchdata.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\openligadbWCF\BusinessLayerLogic.openligadbWCF.Group.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\openligadb\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
+    <None Include="Service References\openligadbWCF\BusinessLayerLogic.openligadbWCF.League.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\openligadb\Sports.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\openligadbWCF\BusinessLayerLogic.openligadbWCF.Matchdata.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Web References\openligadb\Sportsdata.disco" />
-    <None Include="Web References\openligadb\Sportsdata.wsdl" />
-    <None Include="Web References\openligadb\Team.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
+    <None Include="Service References\openligadbWCF\BusinessLayerLogic.openligadbWCF.Sport.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\openligadbWCF\BusinessLayerLogic.openligadbWCF.Team.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\openligadbWCF\Sportsdata.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -216,6 +203,27 @@
       <Project>{F1FEAAC1-7852-49D4-B2A7-4891588EEDA2}</Project>
       <Name>DataLayerLogic</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\openligadbWCF\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\openligadbWCF\Sportsdata.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\openligadbWCF\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\openligadbWCF\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\openligadbWCF\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

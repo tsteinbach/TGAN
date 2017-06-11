@@ -9,7 +9,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using BusinessLayerLogic.Typemethods;
 using DataLayerLogic.Types;
-using BusinessLayerLogic.openligadb;
+using BusinessLayerLogic.openligadbWCF;
 using DataLayerLogic;
 using System.Collections.Generic;
 
@@ -49,15 +49,18 @@ namespace BusinessLayerLogic
 
         public void setGamesInitially()
         {
-          Sportsdata s = new Sportsdata();
-          Fussballdaten[] fd = s.GetFusballdaten(_actRound.RoundNo, "bl1", new SeasonBL(_dbAccess).getStartYearOfSeason(_season), "steinbacht");
+          SportsdataSoapClient sdClient = new SportsdataSoapClient();
+          EnableProxy(sdClient);
+          sdClient.Open();
+
+          Fussballdaten[] fd = sdClient.GetFusballdaten(_actRound.RoundNo, "bl1", new SeasonBL(_dbAccess).getStartYearOfSeason(_season), "steinbacht");
           Matchdata md = null;
           List<RoundGame> games = new List<RoundGame>();
 
           int gameNo = 1;
           foreach (Fussballdaten f in fd)
           {
-            md = s.GetMatchByMatchID(f.SpielID);
+            md = sdClient.GetMatchByMatchID(f.SpielID);
 
             getTeam(f, true);
             getTeam(f,false);
@@ -69,22 +72,27 @@ namespace BusinessLayerLogic
           }
 
           _dbAccess.InsertNewPlayingSchedule(_season, games);
-          
+
+          sdClient.Close();
         }
 
         public void setStartTime(bool insertSchedule)
         {
+            SportsdataSoapClient sdClient = null;
+
             try
             {
-                Sportsdata s = new Sportsdata();
+                sdClient = new SportsdataSoapClient();
+                EnableProxy(sdClient);
+                sdClient.Open();
 
-                Fussballdaten[] fd = s.GetFusballdaten(_actRound.RoundNo, "bl1", new SeasonBL(_dbAccess).getStartYearOfSeason(_season), "steinbacht");
+                Fussballdaten[] fd = sdClient.GetFusballdaten(_actRound.RoundNo, "bl1", new SeasonBL(_dbAccess).getStartYearOfSeason(_season), "steinbacht");
                 Matchdata md = null;
                 RoundGame game = null;
 
                 foreach (Fussballdaten f in fd)
                 {
-                    md = s.GetMatchByMatchID(f.SpielID);
+                    md = sdClient.GetMatchByMatchID(f.SpielID);
                     
                     game = getGame(f);
                     setStarttime(md,ref game);
@@ -92,9 +100,14 @@ namespace BusinessLayerLogic
 
                 if (!insertSchedule) updateDB();
                 else _dbAccess.InsertNewPlayingSchedule(_season, _games);
+
+                sdClient.Close();
             }
             catch (Exception ex)
             {
+                if (sdClient != null)
+                    sdClient.Close();
+
                 throw ex;
             }
         }
@@ -105,21 +118,26 @@ namespace BusinessLayerLogic
               , md.matchDateTime.Hour, md.matchDateTime.Minute, md.matchDateTime.Second);
         }
 
-      
+        
 
         public void setResults()
         {
+            SportsdataSoapClient sdClient = null;
             try
             {
-                Sportsdata s = new Sportsdata();
+                sdClient = new SportsdataSoapClient();
+
+                EnableProxy(sdClient);
                 
-                Fussballdaten[] fd = s.GetFusballdaten(_actRound.RoundNo, "bl1", new SeasonBL(_dbAccess).getStartYearOfSeason(_season), "steinbacht");
+                sdClient.Open();
+                
+                Fussballdaten[] fd = sdClient.GetFusballdaten(_actRound.RoundNo, "bl1", new SeasonBL(_dbAccess).getStartYearOfSeason(_season), "steinbacht");
                 Matchdata md = null;
                 RoundGame game = null;
               
                 foreach (Fussballdaten f in fd)
                 {
-                    md = s.GetMatchByMatchID(f.SpielID);
+                    md = sdClient.GetMatchByMatchID(f.SpielID);
                     matchResult endergebnis;
                     matchResult halbzeitergebnis;
                     getResultTypes(md, out endergebnis, out halbzeitergebnis);
@@ -141,11 +159,29 @@ namespace BusinessLayerLogic
                 }
                 
                 this.updateDB();
+
+                sdClient.Close();
                   
             }
             catch (Exception ex)
             {
+                if(sdClient != null)
+                    sdClient.Close();
+                
                 throw ex;
+            }
+        }
+
+        private static void EnableProxy(SportsdataSoapClient sdClient)
+        {
+            bool useProxy = false;
+            if(useProxy)
+            { 
+                // Anpassung Nutzung des 1&amp;1-Proxys f?r den Webservice:
+                System.ServiceModel.BasicHttpBinding bindung = (System.ServiceModel.BasicHttpBinding)sdClient.ChannelFactory.Endpoint.Binding;
+                bindung.ProxyAddress = new Uri("http://winproxy.schlund.de:3128");
+                bindung.UseDefaultWebProxy = false;
+                // Anpassung Ende
             }
         }
 
@@ -185,7 +221,7 @@ namespace BusinessLayerLogic
 
             if (input.matchIsFinished)
             {
-                if (input.matchResults.Length == 2)
+                if (input.matchResults.Count == 2)
                 {
                     endergebnis = new matchResult();
                     halbzeitergebnis = new matchResult();
@@ -209,7 +245,7 @@ namespace BusinessLayerLogic
                     throw new Exception("Halbzeitstand geht nicht!");
                 return true;
             }
-            else if ((input.matchResults.Length == 1) && (input.matchResults[0].resultName == halbString))
+            else if ((input.matchResults.Count == 1) && (input.matchResults[0].resultName == halbString))
             {
                 if ((input.matchResults[0].pointsTeam1 != -1) && (input.matchResults[0].pointsTeam2 != -1))
                 {
