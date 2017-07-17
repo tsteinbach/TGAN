@@ -7,64 +7,76 @@
 
 <title>TGAN-Master</title>
 <%--<link href="main.css" rel="Stylesheet" type="text/css" />--%>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-     
+    <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1"/>
+    <!--[if IE]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <!--link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"-->
+    <link rel="stylesheet" href="./css/w3c.css"/> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    
+    
+
+    
 </head>
 
 <body>
     <form id="MasterForm" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true" EnablePageMethods="true" />
-         <div id = "container">
-           <div id = "header" class="w3-container w3-blue">
-               <div class="w3-row-padding">
-                   <div class ="w3-half">
-                        <div class="w3-container w3-section">   
-                            <ul class="w3-navbar w3-blue">
-                                <li><a class="w3-hover-none w3-text-black w3-hover-text-white"  href="Default.aspx">Startseite</a></li>
-                                <li><a class="w3-hover-none w3-text-black w3-hover-text-white" href="Tipp-Manager.aspx">Tipps eintragen</a></li>
-                                <li><a class="w3-hover-none w3-text-black w3-hover-text-white" href="Gesamtstand.aspx">Tippübersicht</a></li>
-                                <li><a class="w3-hover-none w3-text-black w3-hover-text-white" href="Member-Information.aspx">Mitgliederinfos</a></li>
-                                 <li><a class="w3-hover-none w3-text-black w3-hover-text-white" href="Forum_TGAN.aspx">Forum</a></li>
-                                <li><asp:LinkButton ID="cmdLogOut" CssClass="w3-hover-none w3-text-black w3-hover-text-white" runat="server" Text="Abmelden" OnClick="cmdLogOut_Click"></asp:LinkButton></li>
-                            </ul> 
-                        </div>
-                   </div>
-                   <div class ="w3-half">
-                        <div class="w3-container w3-section">
-                           <asp:Label ID="lblLogininfo" runat="server"></asp:Label>
-                   
-                           <div class="w3-card-12" style="width:50%"> 
-                        
-                               <asp:Label ID="litActUserList" runat="server"/>
-                        
-                            </div>
-                        </div>
-                    </div>
-                </div>
-           </div>
-           <div id="content" class="w3-container">             
+            
+        <div id="header" class="w3-container">
+        
+            <div class='w3-bar'>
+                <div class='w3-right w3-hide-small w3-wide toptext' style="font-family:'Segoe UI',Arial,sans-serif">Tippgemeinschaft "Alle Neune"</div>
+            </div>
+            <div class="w3-bar w3-light-blue">
+                <a class="w3-bar-item w3-button w3-xlarge" href="Default.aspx"><i title="Startseite" class="fa fa-home"></i></a>
+                <a class="w3-bar-item w3-button w3-hide-small" href="Tipp-Manager.aspx">Tippabgabe</a>
+                <a class="w3-bar-item w3-button w3-hide-small" href="Gesamtstand.aspx">Tippübersicht</a>
+                <a class="w3-bar-item w3-button w3-hide-small" href="Member-Information.aspx">Mitglieder</a>
+                <a class="w3-bar-item w3-button w3-hide-small" href="Forum_TGAN.aspx">Forum</a>
+                <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="myFunction()">&#9776;</a>
+                <asp:LinkButton ID="cmdLogOut" CssClass="w3-bar-item w3-button w3-xlarge" runat="server" OnClick="cmdLogOut_Click"><i title="Abmelden" class="fa fa-sign-out"></i></asp:LinkButton>
+            </div>
+            <div id="mobileMenu" class="w3-bar-block w3-light-blue w3-hide w3-hide-large w3-hide-medium">
+                <a class="w3-bar-item w3-button" href="Tipp-Manager.aspx">Tippabgabe</a>
+                <a class="w3-bar-item w3-button" href="Gesamtstand.aspx">Tippübersicht</a>
+                <a class="w3-bar-item w3-button" href="Member-Information.aspx">Mitglieder</a>
+                <a class="w3-bar-item w3-button" href="Forum_TGAN.aspx">Forum</a>
+            </div>
+
+            <div class="w3-bar w3-gray">
+                 <div class="w3-row w3-half w3-left-align"> 
+                    <asp:Label ID="lblLogininfo" runat="server"></asp:Label>
+                 </div>
+                 <div class="w3-row w3-half w3-right-align">
+                        <%Response.Write("Aktuelle Serverzeit: " + DateTime.Now.ToShortTimeString());%>
+                </div>  
+            </div>
+            <div id="content" class="w3-container">             
                 <asp:ContentPlaceHolder ID="mainContent" runat="server" />
                 <span class="lh4"><br /></span>
-           </div>
-           <%--<div id="right">
-                
-           </div>--%>
-            <div id="footer" runat="server" class="w3-container w3-blue">
-                <div class="w3-row-padding">
-                    <div class="w3-half">
-                        <ul class="w3-navbar w3-blue">
-                           <li><a class="w3-hover-none w3-text-black w3-hover-text-white" href="Docs/TSATZ.pdf">Satzung</a></li>
-                           <li><a class="w3-hover-none w3-text-black w3-hover-text-white" href="Impressum.aspx">Impressum</a></li>
-                           <li><a class="w3-hover-none w3-text-black w3-hover-text-white" href="HallOfFame.aspx">Hall of Fame</a></li>
-                       </ul>
-                    </div>
-                    <div class="w3-half w3-right-align">
-                        <%Response.Write("Aktuelle Serverzeit: " + DateTime.Now.ToShortTimeString());%>
-                    </div>
-                </div>
             </div>
-       </div>
+
+        </div>
+        <div id="footer" class="w3-container">
+            <div class="w3-bar w3-gray">
+                <asp:Label ID="litActUserList" runat="server"/> 
+            </div>
+            <div class="w3-bar w3-light-blue w3-left-align">
+                <a class="w3-bar-item w3-button" href="Docs/TSATZ.pdf">Satzung</a>
+                <a class="w3-bar-item w3-button" href="Impressum.aspx">Impressum</a>
+                <a class="w3-bar-item w3-button" href="HallOfFame.aspx">Hall of Fame</a>
+            </div> 
+        </div>     
     </form>
+    <script type="text/javascript">
+        function myFunction() {
+            var x = document.getElementById("mobileMenu");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else { 
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+</script>
 </body>
 </html>

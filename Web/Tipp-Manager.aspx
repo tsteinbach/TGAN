@@ -23,7 +23,7 @@
             <p><%=ACTIVEUSER %></p>
         </td>
     </tr>
-    <tr class="tableHeaderRow">
+    <tr>
         <th>Anspiel</th>
         <th>Heim</th>
         <th>Gast</th>
