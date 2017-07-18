@@ -7,9 +7,43 @@ using System.Threading;
 
 namespace BusinessLayerLogic.Typemethods
 {
-    public enum TippState
+   
+    public class TippState
     {
-        True,UnechteBank,EchteBank,False,NotReadable
+        public enum TippStateEnum{True = 0,UnechteBank = 1,EchteBank =2,False =3 ,NotReadable =4}
+
+        const string cssTrue = "w3-green";
+        const string cssFalse = "w3-red";
+        const string cssEchte = "w3-blue";
+        const string cssUnechte = "w3-teal";
+        const string cssNotReadable = "w3-gray";
+
+
+        public static KeyValuePair<TippStateEnum, string> trueTipp = new KeyValuePair<TippStateEnum,string>(TippStateEnum.True,cssTrue);
+        public static KeyValuePair<TippStateEnum, string> falseTipp = new KeyValuePair<TippStateEnum,string>(TippStateEnum.False,cssFalse);
+        public static KeyValuePair<TippStateEnum, string> echteBank = new KeyValuePair<TippStateEnum,string>(TippStateEnum.EchteBank,cssEchte);
+        public static KeyValuePair<TippStateEnum, string> unEchteBank = new KeyValuePair<TippStateEnum,string>(TippStateEnum.EchteBank,cssUnechte);
+        public static KeyValuePair<TippStateEnum, string> NotReadable = new KeyValuePair<TippStateEnum, string>(TippStateEnum.EchteBank, cssNotReadable);
+
+        public static string GetCssClass(TippStateEnum tippStateVal)
+        {
+            switch (tippStateVal)
+            {
+                case TippStateEnum.True:
+                    return cssTrue;
+                
+                case TippStateEnum.UnechteBank:
+                    return cssFalse;
+                case TippStateEnum.EchteBank:
+                    return cssEchte;
+                case TippStateEnum.False:
+                    return cssFalse;
+                case TippStateEnum.NotReadable:
+                    return cssNotReadable;
+                default:
+                    throw new Exception("TippState not known");
+            }
+        }
     }
 
     public class GesamtStand
@@ -141,10 +175,10 @@ namespace BusinessLayerLogic.Typemethods
     {
         public TippsPerUser()
         {
-            TippsPerUserPROP = new Dictionary<Member, KeyValuePair<Tipp, List<TippState>>>();
+            TippsPerUserPROP = new Dictionary<Member, KeyValuePair<Tipp, List<TippState.TippStateEnum>>>();
         }
 
-        public Dictionary<Member, KeyValuePair<Tipp, List<TippState>>> TippsPerUserPROP = null;
+        public Dictionary<Member, KeyValuePair<Tipp, List<TippState.TippStateEnum>>> TippsPerUserPROP = null;
     }
 
     public class TippBL
@@ -242,7 +276,7 @@ namespace BusinessLayerLogic.Typemethods
         /// <returns></returns>
         public void GetTippUsingAThread(object tippsPerUser)
         {
-            KeyValuePair<Tipp, List<TippState>> result = GetTipp();
+            KeyValuePair<Tipp, List<TippState.TippStateEnum>> result = GetTipp();
             ((TippsPerUser)tippsPerUser).TippsPerUserPROP.Add(_Member, result);
         }
 
@@ -250,7 +284,7 @@ namespace BusinessLayerLogic.Typemethods
         /// Tipp aus der DB wird gesetzt und es findet ne Prüfung auf Banken statt
         /// </summary>
         /// <returns></returns>
-        public KeyValuePair<Tipp, List<TippState>> GetTipp()
+        public KeyValuePair<Tipp, List<TippState.TippStateEnum>> GetTipp()
         {
             TippSet  = _dbAccess.GetTippedValues(_Round,_Season,_Member,_Games);
             return EvaluateMemberTipp();
@@ -365,7 +399,7 @@ namespace BusinessLayerLogic.Typemethods
 
             _Games = new RoundBL(_Round, _Season, _dbAccess).GetGames();
             TippSet = _dbAccess.GetTippedValues(_Round, _Season, _Member, _Games);
-            KeyValuePair<Tipp, List<TippState>> tipp = this.EvaluateMemberTipp();
+            KeyValuePair<Tipp, List<TippState.TippStateEnum>> tipp = this.EvaluateMemberTipp();
 
             for (int i = 0; i < tipp.Value.Count; i++)
             {
@@ -377,22 +411,22 @@ namespace BusinessLayerLogic.Typemethods
 
                 switch (tipp.Value[i])
                 {
-                    case TippState.True:
+                    case TippState.TippStateEnum.True:
                         ((GesamtStand)gesamtStand).RichtigeTipps++;
                         ((GesamtStand)gesamtStand).PunkteInsgesamt++;
                         break;
-                    case TippState.False:
+                    case TippState.TippStateEnum.False:
                         if (tippVals[i] == TippValue.NotSet)
                             ((GesamtStand)gesamtStand).NichtGetippt++;
                         ((GesamtStand)gesamtStand).FalscheTipps++;
                         isNeunerTipp = false;
                         break;
-                    case TippState.EchteBank:
+                    case TippState.TippStateEnum.EchteBank:
                         ((GesamtStand)gesamtStand).EchteBank++;
                         ((GesamtStand)gesamtStand).RichtigeTipps++;
                         ((GesamtStand)gesamtStand).PunkteInsgesamt += 3;
                         break;
-                    case TippState.UnechteBank:
+                    case TippState.TippStateEnum.UnechteBank:
                         ((GesamtStand)gesamtStand).UnechteBank++;
                         ((GesamtStand)gesamtStand).RichtigeTipps++;
                         ((GesamtStand)gesamtStand).PunkteInsgesamt += 2;
@@ -432,22 +466,22 @@ namespace BusinessLayerLogic.Typemethods
                 {
                     //TippValue target; 
                     //TippState tippState = GetTippResult(game.Result,t.GivenTipps[game],out target);
-                    TippState tippState = IsBankTipp(game, t.GivenTipps[game]);
+                    TippState.TippStateEnum tippState = IsBankTipp(game, t.GivenTipps[game]);
 
                     //if ((tippState != TippState.False) && (tippState != TippState.NotReadable) && (actMinimumTipp == 100))
                     //if (((tippState == TippState.False) || (tippState == TippState.NotReadable)) && (actMinimumTipp == 100))
-                    if ((tippState != TippState.NotReadable) && (actMinimumTipp == 100))
+                    if ((tippState != TippState.TippStateEnum.NotReadable) && (actMinimumTipp == 100))
                         actMinimumTipp = 0;
                     
                     switch (tippState)
                     { 
-                        case TippState.EchteBank:
+                        case TippState.TippStateEnum.EchteBank:
                             actMinimumTipp = actMinimumTipp + 3;
                             break;
-                        case TippState.UnechteBank:
+                        case TippState.TippStateEnum.UnechteBank:
                             actMinimumTipp = actMinimumTipp + 2;
                             break;
-                        case TippState.True:
+                        case TippState.TippStateEnum.True:
                             actMinimumTipp++;
                             break;
                     }
@@ -468,7 +502,7 @@ namespace BusinessLayerLogic.Typemethods
         /// handelt es sich bei diese Spieltipps um eine Bank
         /// </summary>
         /// <returns></returns>
-        private KeyValuePair<Tipp, List<TippState>> EvaluateMemberTipp()
+        private KeyValuePair<Tipp, List<TippState.TippStateEnum>> EvaluateMemberTipp()
         {
             try
             {
@@ -477,7 +511,7 @@ namespace BusinessLayerLogic.Typemethods
 
                 int count = TippSet.GivenTipps.Count;
 
-                List<TippState> states = new List<TippState>();
+                List<TippState.TippStateEnum> states = new List<TippState.TippStateEnum>();
                 TippValue[] tippvals = new TippValue[count];
                 TippSet.GivenTipps.Values.CopyTo(tippvals, 0);
 
@@ -487,7 +521,7 @@ namespace BusinessLayerLogic.Typemethods
                 for (int i = 0; i < count; i++)
                     states.Add(IsBankTipp(rGames[i], tippvals[i]));
 
-                return new KeyValuePair<Tipp, List<TippState>>(TippSet, states);
+                return new KeyValuePair<Tipp, List<TippState.TippStateEnum>>(TippSet, states);
             }
             catch (Exception ex)
             {
@@ -560,16 +594,16 @@ namespace BusinessLayerLogic.Typemethods
         /// <param name="userTipp"></param>
         /// <param name="target">Tendenz</param>
         /// <returns></returns>
-        private static TippState GetTippResult(string result, TippValue userTipp, out TippValue target)
+        private static TippState.TippStateEnum GetTippResult(string result, TippValue userTipp, out TippValue target)
         {
             target = DetermineResultOfGame(result);
 
             if (target == TippValue.NotSet)
-                return TippState.NotReadable;
+                return TippState.TippStateEnum.NotReadable;
             else if (userTipp == target)
-                return TippState.True;
+                return TippState.TippStateEnum.True;
              else
-                return TippState.False;
+                return TippState.TippStateEnum.False;
         }
 
         public static TippValue DetermineResultOfGame(string resultString)
@@ -609,13 +643,13 @@ namespace BusinessLayerLogic.Typemethods
             return resultString.Substring(0, index).Split(':');
         }
 
-        private TippState IsBankTipp(RoundGame game,TippValue userTipp)
+        private TippState.TippStateEnum IsBankTipp(RoundGame game,TippValue userTipp)
         {
             try
             {
                 //it is not used in here
                 TippValue val;
-                TippState currentUserTippResult = GetTippResult(game.Result, userTipp, out val);
+                TippState.TippStateEnum currentUserTippResult = GetTippResult(game.Result, userTipp, out val);
                 TippValue memberTipp = TippValue.NotSet;
                 List<TippValue> tippOfAllMembers = new List<TippValue>();
                 // prüft, ob alle User den gleichen falschen Tipp getätigt haben
@@ -623,7 +657,7 @@ namespace BusinessLayerLogic.Typemethods
                 bool isFalseTipp2 = true;
                 bool isFalsTipp1Set = false;
 
-                if (currentUserTippResult != TippState.True)
+                if (currentUserTippResult != TippState.TippStateEnum.True)
                     return currentUserTippResult;
 
                 foreach (Tipp t in AllTipps)
@@ -638,7 +672,7 @@ namespace BusinessLayerLogic.Typemethods
                 }
 
                 //ist ne unechte Bank
-                currentUserTippResult = TippState.UnechteBank;
+                currentUserTippResult = TippState.TippStateEnum.UnechteBank;
 
                 //Prüfung auf echte Bank
                 if (tippOfAllMembers.Count > 0)
@@ -656,7 +690,7 @@ namespace BusinessLayerLogic.Typemethods
                 }
 
                 if (isFalseTipp1 != isFalseTipp2)
-                    currentUserTippResult = TippState.EchteBank;
+                    currentUserTippResult = TippState.TippStateEnum.EchteBank;
 
                 return currentUserTippResult;
             }

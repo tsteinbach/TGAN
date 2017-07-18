@@ -57,6 +57,7 @@ public partial class Login : BasePage
     protected void Page_Load(object sender, EventArgs e)
     {
         this.Title = "TGAN-Tippoverview";
+       
         placeLegend.Controls.Add(base.CreateTippLegend());
         
         if(ACTIVEMEMBER == null)

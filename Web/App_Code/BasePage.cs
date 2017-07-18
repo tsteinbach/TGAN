@@ -44,12 +44,6 @@ public class BasePage : Page
     #endregion
 
     #region Properties
-    //protected static int ActiveRoundNo
-    //{
-    //    get { return _roundNo; }
-    //    set { _roundNo = value; }
-    //}
-
     
 
     protected static Season ACTUALSEASON
@@ -130,19 +124,29 @@ public class BasePage : Page
         return result;
     }
 
-    protected Table CreateTippLegend()
+    protected LiteralControl CreateTippLegend()
     {
-        Table tbl = new Table();
-        tbl.CssClass = "tippLegend";
-        TableRow tr = null;
-        TableCell td = null;
+        
 
-        tr = new TableRow(); td = new TableCell(); td.Text = "Tipp ist falsch"; td.CssClass = TippState.False.ToString(); tr.Cells.Add(td); tbl.Rows.Add(tr);
-        tr = new TableRow(); td = new TableCell(); td.Text = "Tipp ist korrekt, <br/> aber keine Bank"; td.CssClass = TippState.True.ToString(); tr.Cells.Add(td); tbl.Rows.Add(tr);
-        tr = new TableRow(); td = new TableCell(); td.Text = "Echte Bank"; td.CssClass = TippState.EchteBank.ToString(); tr.Cells.Add(td); tbl.Rows.Add(tr);
-        tr = new TableRow(); td = new TableCell(); td.Text = "Unechte Bank"; td.CssClass = TippState.UnechteBank.ToString(); tr.Cells.Add(td); tbl.Rows.Add(tr);
-        tr = new TableRow(); td = new TableCell(); td.Text = "Tipp ist noch nicht validierbar"; td.CssClass = TippState.NotReadable.ToString(); tr.Cells.Add(td); tbl.Rows.Add(tr);
-        return tbl;
+        StringBuilder legendContent = new StringBuilder();
+        legendContent.Append("<div class='w3-bar'>");
+        legendContent.AppendFormat("<div class='w3-bar-item {0}'>Falsch Getippt</div>",TippState.falseTipp.Value);
+        legendContent.AppendFormat("<div class='w3-bar-item {0}'>Richtig Getippt</div>", TippState.trueTipp.Value);
+        legendContent.AppendFormat("<div class='w3-bar-item {0}'>Echte Bank</div>", TippState.echteBank.Value);
+        legendContent.AppendFormat("<div class='w3-bar-item {0}'>Unechte Bank</div>", TippState.unEchteBank.Value);
+        legendContent.AppendFormat("<div class='w3-bar-item {0}'>Keine Wertung</div>", TippState.NotReadable.Value);
+        legendContent.AppendFormat("</div>");
+
+
+
+        return new LiteralControl() { Text = legendContent.ToString()};
+
+        //tr = new TableRow(); td = new TableCell(); td.Text = "Tipp ist falsch"; td.CssClass = TippState.False.ToString(); tr.Cells.Add(td); tbl.Rows.Add(tr);
+        //tr = new TableRow(); td = new TableCell(); td.Text = "Tipp ist korrekt, <br/> aber keine Bank"; td.CssClass = TippState.True.ToString(); tr.Cells.Add(td); tbl.Rows.Add(tr);
+        //tr = new TableRow(); td = new TableCell(); td.Text = "Echte Bank"; td.CssClass = TippState.EchteBank.ToString(); tr.Cells.Add(td); tbl.Rows.Add(tr);
+        //tr = new TableRow(); td = new TableCell(); td.Text = "Unechte Bank"; td.CssClass = TippState.UnechteBank.ToString(); tr.Cells.Add(td); tbl.Rows.Add(tr);
+        //tr = new TableRow(); td = new TableCell(); td.Text = "Tipp ist noch nicht validierbar"; td.CssClass = TippState.NotReadable.ToString(); tr.Cells.Add(td); tbl.Rows.Add(tr);
+        //return tbl;
     }
 
 
@@ -192,7 +196,7 @@ public class BasePage : Page
             List<RoundGame> games = roundB.GetGames();
             tippB = new TippBL(round, ACTUALSEASON, member, games, ACTIVEUSERGROUP, TGANConfiguration.DBACCESS);
 
-            KeyValuePair<Tipp, List<TippState>> tipp = tippB.GetTipp();
+            KeyValuePair<Tipp, List<TippState.TippStateEnum>> tipp = tippB.GetTipp();
             TippValue[] tippvals = new TippValue[tipp.Key.GivenTipps.Count];
             tipp.Key.GivenTipps.Values.CopyTo(tippvals, 0);
 
@@ -238,9 +242,9 @@ public class BasePage : Page
                             tippControl.Enabled = false;
 
                         if (tippvals.Length == 0)
-                            tippControl.CssClass = TippState.NotReadable.ToString();
+                            tippControl.CssClass = TippState.NotReadable.Value.ToString();
                         else
-                            tippControl.CssClass = ((List<TippState>)tipp.Value)[index - 1].ToString();
+                            tippControl.CssClass = TippState.GetCssClass(((List<TippState.TippStateEnum>)tipp.Value)[index - 1]);
                     }
                     else
                         throw new NullReferenceException();

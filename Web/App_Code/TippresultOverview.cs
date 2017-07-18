@@ -248,7 +248,7 @@ public class TippresultOverview : MemberInfomationBasePage, ITippresultOverview
         TippBL tippB = null;
         //KeyValuePair<Tipp, List<TippState>> result;
         TippValue[] tippvals = null;
-        TippState[] tippStates = null;
+        TippState.TippStateEnum[] tippStates = null;
 
         Table tbl = new Table();
         tbl.CssClass = cssTippOverview;
@@ -292,7 +292,7 @@ public class TippresultOverview : MemberInfomationBasePage, ITippresultOverview
         }
 
 
-        foreach (KeyValuePair<Member, KeyValuePair<Tipp, List<TippState>>> tippResult in tippsPerUser.TippsPerUserPROP)
+        foreach (KeyValuePair<Member, KeyValuePair<Tipp, List<TippState.TippStateEnum>>> tippResult in tippsPerUser.TippsPerUserPROP)
         {
             tippvals = new TippValue[tippResult.Value.Key.GivenTipps.Values.Count];
             tippResult.Value.Key.GivenTipps.Values.CopyTo(tippvals, 0);
@@ -319,14 +319,14 @@ public class TippresultOverview : MemberInfomationBasePage, ITippresultOverview
 
                 //nur wenn das Spiel schon vorbei ist werden die Tipps angezeigt
                 if (GamesOfImportance[i].IsHidden)
-                    td.CssClass = TippState.NotReadable.ToString();
+                    td.CssClass = TippState.NotReadable.Value.ToString();
                 else if (DateTime.Compare(GamesOfImportance[i].StartTime, DateTime.Now) == -1)
                 {
                     td.Text = TippBL.GetStringTippValue(tippvals[i]);
-                    td.CssClass = tippStates[i].ToString();
+                    td.CssClass = TippState.GetCssClass(tippStates[i]);
                 }
                 else
-                    td.CssClass = TippState.NotReadable.ToString();
+                    td.CssClass = TippState.NotReadable.Value.ToString();
                 tr.Cells.Add(td);
             }
 
