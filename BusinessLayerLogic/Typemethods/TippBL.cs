@@ -15,7 +15,7 @@ namespace BusinessLayerLogic.Typemethods
         const string cssTrue = "w3-green";
         const string cssFalse = "w3-red";
         const string cssEchte = "w3-blue";
-        const string cssUnechte = "w3-teal";
+        const string cssUnechte = "w3-yellow";
         const string cssNotReadable = "w3-gray";
 
 
@@ -31,9 +31,8 @@ namespace BusinessLayerLogic.Typemethods
             {
                 case TippStateEnum.True:
                     return cssTrue;
-                
                 case TippStateEnum.UnechteBank:
-                    return cssFalse;
+                    return cssUnechte;
                 case TippStateEnum.EchteBank:
                     return cssEchte;
                 case TippStateEnum.False:

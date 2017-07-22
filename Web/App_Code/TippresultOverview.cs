@@ -24,8 +24,8 @@ public class TippresultOverview : MemberInfomationBasePage, ITippresultOverview
     private readonly string _spieltag = null;
     private readonly string _userGroup = null;
 
-    private const string cssTippOverview = "TippOverview";
-    private const string cssTH = "gesamtStand_TH";
+    private const string cssTippOverview = "w3-table w3-border";
+    private const string cssTH = "w3-border";
     private static SeasonBL _seasonB = null;
     private static MemberBL _memberB = null;
     
@@ -184,9 +184,9 @@ public class TippresultOverview : MemberInfomationBasePage, ITippresultOverview
             {
                 tr = new TableRow();
                 if (i % 2 == 0)
-                    tr.CssClass = "alternateRow";
+                    tr.CssClass = "w3-white";
                 else
-                    tr.CssClass = "nonAlternateRow";
+                    tr.CssClass = "w3-light-gray";
 
                 position++;
                 if (gesamtStandList[i].PunkteInsgesamt.CompareTo(last_WholePoints) == 0)
@@ -302,13 +302,13 @@ public class TippresultOverview : MemberInfomationBasePage, ITippresultOverview
 
             //UserName wird in die Tabelle eingefügt
             td = new TableCell();
-            td.CssClass = "gesamtStandConfig";
+            td.CssClass = "w3-border ";
             td.Text = tippResult.Key.UserName;
             tr.Cells.Add(td);
 
             //Totalanzahl des Spieltags wird angezeigt
             td = new TableCell();
-            td.CssClass = "gesamtStandConfig";
+            td.CssClass = "w3-border gesamtStandConfig";
             td.Text = totalList.Single(x => x.Key == tippResult.Key.ID).Value.ToString(); 
             tr.Cells.Add(td);
 
@@ -319,14 +319,14 @@ public class TippresultOverview : MemberInfomationBasePage, ITippresultOverview
 
                 //nur wenn das Spiel schon vorbei ist werden die Tipps angezeigt
                 if (GamesOfImportance[i].IsHidden)
-                    td.CssClass = TippState.NotReadable.Value.ToString();
+                    td.CssClass = String.Format("w3-border {0}",TippState.NotReadable.Value.ToString());
                 else if (DateTime.Compare(GamesOfImportance[i].StartTime, DateTime.Now) == -1)
                 {
                     td.Text = TippBL.GetStringTippValue(tippvals[i]);
-                    td.CssClass = TippState.GetCssClass(tippStates[i]);
+                    td.CssClass = String.Format("w3-border {0}",TippState.GetCssClass(tippStates[i]));
                 }
                 else
-                    td.CssClass = TippState.NotReadable.Value.ToString();
+                    td.CssClass = String.Format("w3-border {0}",TippState.NotReadable.Value.ToString());
                 tr.Cells.Add(td);
             }
 
