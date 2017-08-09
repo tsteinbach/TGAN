@@ -158,26 +158,10 @@ public partial class Login : BasePage
         catch (Exception ex)
         {
             overview.Controls.Add(new LiteralControl(ex.ToString()));
-            //bigTippOverview.Tabs[0].Controls.Add(new LiteralControl(ex.ToString()));
         }
     }
 
-    //private void GetOverview()
-    //{
-    //    CreateTippResultInstance();
-    //    //bigTippOverview.Tabs[ActiveTabIndex].Controls.Clear();
-        
-    //    if (_tippResultOverview != null)
-    //    {
-    //        if (lstView.SelectedValue == "Overview")
-    //            overview.Controls.Add(this._tippResultOverview.CreateGesamtstand());
-    //        else if (lstView.SelectedValue == "Bets")
-    //            overview.Controls.Add(this._tippResultOverview.CreateTippedOverview());
-    //    }
-    //    else
-    //        overview.Controls.Add(new LiteralControl("Eine der Listen Saison, Spieltag oder Benutzergruppe sind nicht gefüllt!"));
-    //}
-    
+   
     private void CreateTippResultInstance()
     {
         

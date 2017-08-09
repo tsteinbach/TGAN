@@ -271,7 +271,13 @@ public class TippresultOverview : MemberInfomationBasePage, ITippresultOverview
         {
             th = new TableHeaderCell();
             th.CssClass = cssTH;
-            th.Text = String.Format("{0}<br/>{1}<br/>{2}", RoundB.SelectTeamName(GamesOfImportance[i].HomeTeam), GamesOfImportance[i].Result, RoundB.SelectTeamName(GamesOfImportance[i].AwayTeam));
+            th.Text = String.Format(@"<img src='{0}' alt='{1}'style='width:60px;height:60px;'><br/>{2}<br/>
+                                        <img src='{3}' alt='{4}' style='width:60px;height:60px;'>",
+                                                                   RoundB.SelectTeamLogo(GamesOfImportance[i].HomeTeam),
+                                                                  RoundB.SelectTeamName(GamesOfImportance[i].HomeTeam),
+                                                                  GamesOfImportance[i].Result,
+                                                                  RoundB.SelectTeamLogo(GamesOfImportance[i].AwayTeam),
+                                                                  RoundB.SelectTeamName(GamesOfImportance[i].AwayTeam));
             tr.Cells.Add(th);
         }
 

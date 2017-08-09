@@ -104,7 +104,14 @@ namespace BusinessLayerLogic.Typemethods
         public string SelectTeamName(Guid idOfTeam)
         {
             TeamID = idOfTeam;
-            return TEAMS.Find(FindTeam).NameToShow;           
+            return TEAMS.Find(FindTeam).NameToShow; 
+        }
+
+        public string SelectTeamLogo(Guid idOfTeam)
+        {
+            TeamID = idOfTeam;
+            string logo = TEAMS.Find(FindTeam).Logo;
+            return String.Format("./images/Logos/{0}", logo);
         }
 
         public ArrayList Create34SpieltagArray()
