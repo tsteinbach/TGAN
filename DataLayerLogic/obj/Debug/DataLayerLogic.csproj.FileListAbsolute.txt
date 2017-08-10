@@ -33,3 +33,4 @@ C:\DOTNET\_GIT\TGAN\Web\bin\DataLayerLogic.dll
 C:\DOTNET\_GIT\TGAN\Web\bin\DataLayerLogic.pdb
 C:\DOTNET\_GIT\TGAN\DataLayerLogic\obj\Debug\DataLayerLogic.dll
 C:\DOTNET\_GIT\TGAN\DataLayerLogic\obj\Debug\DataLayerLogic.pdb
+C:\DOTNET\_GIT\TGAN\DataLayerLogic\obj\Debug\DataLayerLogic.csprojResolveAssemblyReference.cache

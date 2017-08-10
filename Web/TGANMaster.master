@@ -45,10 +45,10 @@
 
             <div class="w3-bar w3-gray">
                  <div class="w3-row w3-half w3-left-align"> 
-                    <asp:Label ID="lblLogininfo" runat="server"></asp:Label>
+                    <asp:Label CssClass="w3-margin-left" ID="lblLogininfo" runat="server"></asp:Label>
                  </div>
                  <div class="w3-row w3-half w3-right-align">
-                        <%Response.Write("Aktuelle Serverzeit: " + DateTime.Now.ToShortTimeString());%>
+                        <span class="w3-margin-right"> <%Response.Write("Aktuelle Serverzeit: " + DateTime.Now.ToShortTimeString());%></span>
                 </div>  
             </div>
             <div id="content" class="w3-container">             
@@ -59,7 +59,7 @@
         </div>
         <div id="footer" class="w3-container">
             <div class="w3-bar w3-gray">
-                <asp:Label ID="litActUserList" runat="server"/> 
+                <asp:Label CssClass="w3-margin-left" ID="litActUserList" runat="server"/> 
             </div>
             <div class="w3-bar w3-light-blue w3-left-align">
                 <a class="w3-bar-item w3-button" href="Docs/TSATZ.pdf">Satzung</a>

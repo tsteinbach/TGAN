@@ -110,7 +110,7 @@ public partial class TGANMaster : System.Web.UI.MasterPage
     public void SETActiveUserList()
     {
         StringBuilder sb = new StringBuilder();
-        sb.Append(@"<div>Angemeldete Benutzer:");
+        sb.Append(@"Angemeldete Benutzer:");
   
         foreach (KeyValuePair<Guid, string> user in ACTIVEUSERLIST)
             sb.Append(String.Format(" {0}", user.Value));
