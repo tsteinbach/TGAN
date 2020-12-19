@@ -85,3 +85,5 @@ C:\DOTNET\_GIT\TGAN\TGAN_Svc\bin\DataLayerLogic.dll
 C:\DOTNET\_GIT\TGAN\TGAN_Svc\bin\BusinessLayerLogic.pdb
 C:\DOTNET\_GIT\TGAN\TGAN_Svc\bin\DataLayerLogic.pdb
 C:\DOTNET\_GIT\TGAN\TGAN_Svc\bin\BusinessLayerLogic.XmlSerializers.dll
+D:\GIT\TGAN\TGAN\TGAN_Svc\obj\Debug\TGAN_Svc.csprojAssemblyReference.cache
+D:\GIT\TGAN\TGAN\TGAN_Svc\obj\Debug\TGAN_Svc.csproj.CoreCompileInputs.cache

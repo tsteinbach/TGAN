@@ -46,3 +46,11 @@ C:\DOTNET\_GIT\TGAN\Web\bin\BusinessLayerLogic.pdb
 C:\DOTNET\_GIT\TGAN\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.csprojResolveAssemblyReference.cache
 C:\DOTNET\_GIT\TGAN\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.dll
 C:\DOTNET\_GIT\TGAN\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.pdb
+D:\GIT\TGAN\TGAN\Web\bin\BusinessLayerLogic.dll.config
+D:\GIT\TGAN\TGAN\Web\bin\BusinessLayerLogic.dll
+D:\GIT\TGAN\TGAN\Web\bin\BusinessLayerLogic.pdb
+D:\GIT\TGAN\TGAN\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.csprojAssemblyReference.cache
+D:\GIT\TGAN\TGAN\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.csproj.CoreCompileInputs.cache
+D:\GIT\TGAN\TGAN\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.csproj.CopyComplete
+D:\GIT\TGAN\TGAN\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.dll
+D:\GIT\TGAN\TGAN\BusinessLayerLogic\obj\Debug\BusinessLayerLogic.pdb

@@ -1,6 +1,6 @@
 
-select sp.Spieltag, a.Spiel, a.Zeit as Anspielzeit, (select t.NameToShow from Team t where t.ID = a.TeamID_home) as Heim,
-(select t.NameToShow from Team t where t.ID = a.TeamID_away) as Gast
+select sp.Spieltag, a.Spiel, a.Zeit as Anspielzeit, (select t.NameToShow from Teams t where t.ID = a.TeamID_home) as Heim,
+(select t.NameToShow from Teams t where t.ID = a.TeamID_away) as Gast
 from Ansetzung a join Spieltag sp on a.SpieltagID = sp.ID
 join Season s on s.ID = sp.SeasonID
 where s.Season = '2020/2021'

@@ -22,6 +22,11 @@
 
 *.pdb
 
+/TGAN_Svc/*
+/Web/bin/*
+/BusinessLayerLogic/obj/*
+/.vs/*
+
 BusinessLayerLogic/obj/Debug/BusinessLayerLogic.dll
 
 Web/bin/BusinessLayerLogic.dll
@@ -39,3 +44,6 @@ DataLayerLogic/obj/Debug/DataLayerLogic.pdb
 Web/bin/DataLayerLogic.dll
 
 Web/bin/DataLayerLogic.pdb
+/.vs/Tgan_4.0
+/BusinessLayerLogic/obj/Debug/.NETFramework,Version=v4.0.AssemblyAttributes.cs
+/BusinessLayerLogic/obj/Debug/BusinessLayerLogic.csproj.CopyComplete

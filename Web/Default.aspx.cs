@@ -159,8 +159,10 @@ public partial class _Default : MemberInfomationBasePage
                     
                     if (m.Birthday.HasValue)
                     {
-                        if ((DateTime.Today.DayOfYear <= m.Birthday.Value.DayOfYear) &&
-                            (DateTime.Today.AddDays(TGANConfiguration.GeburtstagsHistory).DayOfYear >= m.Birthday.Value.DayOfYear))
+                        var birthdayNormed = new DateTime(DateTime.Today.Year,m.Birthday.Value.Month,m.Birthday.Value.Day);
+                        var diff = (DateTime.Today - birthdayNormed).Days;
+
+                        if (diff <= 0 && diff <= TGANConfiguration.GeburtstagsHistory)
                         {
                             index++;
                             hasBirthday = true;
